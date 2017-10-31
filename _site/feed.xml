@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.6.2">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2017-10-31T14:35:48+00:00</updated><id>http://localhost:4000/</id><title type="html">ankurhanda.github.io</title><subtitle>writing my views on things I like</subtitle><entry><title type="html">Where does current deep RL stand?</title><link href="http://localhost:4000/current-deep-rl/" rel="alternate" type="text/html" title="Where does current deep RL stand?" /><published>2017-10-30T00:00:00+00:00</published><updated>2017-10-30T00:00:00+00:00</updated><id>http://localhost:4000/current-deep-rl</id><content type="html" xml:base="http://localhost:4000/current-deep-rl/">&lt;p&gt;&lt;img src=&quot;/images/simulated_classroom.jpg&quot; alt=&quot;simulations are rewarding but can be far from reality&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Recent advances have certainly highlighted what can be possibly be achieved with current state of the art with deep RL. However, bigger questions remain as the progress has come with various assumptions (consequently the limitations) which the methods often do not convey explicitly. Some of the (obvious and not so obvious) limitations that the current deep RL is riddled with are explained in detail below:&lt;/p&gt;
+
+&lt;p&gt;Very obvious&lt;/p&gt;
+
+&lt;p&gt;Exploration:&lt;/p&gt;
+
+&lt;p&gt;One of the primary reasons why RL has been extremely finicky and tricky to get to work is the exponentially growing search space that an RL algorithm must explore in pursuit of finding the actions that lead to high expected rewards. This, however, scales exponentially as the dimensions of the state and action space increase. An obvious solution is to have multiple workers doing explorations in parallel but at some point even that starts to hit a fundamental limit due to the curse of dimensionality. Such kind of brute-force search isn’t ideal and feasible often in many cases. In real world, where a robot is interacting with the environment, it is at times costly or impossible to carry out exploration at a scale needed for many RL algorithms. Often in simulations, one can run the world faster than real-time but it is not possible to run the real world faster than real-time. Even the choice of having multiple workers starts to get tricky because robots are costly and maintaining them to work non-stop without any damage or provide repeatable motion is extremely hard over long periods of time.&lt;/p&gt;
+
+&lt;p&gt;Sensitivity to various hyper-parameters&lt;/p&gt;
+
+&lt;p&gt;Since RL requires a lot of exploration especially in the early phases where the agent is trying out random actions to figure out which actions are rewarding and help it achieve a particular goal, the random seeds used in the code can staggeringly affect the algorithm, its convergence and learning. Moreover, various other hyper-parameters including the epsilon (for epsilon greedy) and the gamma (discount factor) also affect in unexpected ways to the overall performance of the algorithm.&lt;/p&gt;
+
+&lt;p&gt;Generalisation issues&lt;/p&gt;
+
+&lt;p&gt;In most RL algorithms training and testing happens on the same environment. This is in stark contrast to most supervised learning methods where an explicit held-out test dataset is maintained to gauge the performance of the learnt model on relatively different distribution of data. Therefore, in RL, the agent is most often incentivised to master a particular skill needed for a given environment rather generalise across different environments or slightly different variations of environments it was trained on. It isn’t clear when it became socially acceptable in RL to train and test on the same dataset.&lt;/p&gt;
+
+&lt;p&gt;Only works for small time horizons&lt;/p&gt;
+
+&lt;p&gt;Using a fixed gamma, the discount factor, already limits the number of time steps in future that can be affected by the current action. For instance, using a discount factor of 0.99 means that the current action can only affect the next 100 time steps  (geometric progression) and therefore, it cannot solve long time horizon tasks, particularly that require planning for long time.&lt;/p&gt;
+
+&lt;p&gt;Sparse rewards very difficult to train&lt;/p&gt;
+
+&lt;p&gt;Consider training with policy gradients where the reward is only obtained at the end of the episode. Since each action’s log-likelihood is scaled by the reward to go (the Q value or the Advantage function) it is zero for those cases where there is no reward and therefore, very difficult to train. Because the gradient is zero it is impossible for the algorithm to get any signal for that move. Most ATARI environments provide fairly dense reward and hence it has been possible to train with standard DQN and policy gradients.&lt;/p&gt;
+
+&lt;p&gt;Not so obvious&lt;/p&gt;
+
+&lt;p&gt;Forgetting in self-play&lt;/p&gt;
+
+&lt;p&gt;Self-play has been a powerful technique to enable learning of very complicated skills. It sits on top of the underlying RL algorithm. One would assume that if the rewards are reversed for agents and that they start competing against each other it will naturally lead to progressively increasing skills. But there is a problem: RL algorithms trained with policy gradients in sparsely-rewarded environments have a tendency to forget what they learnt and may end up learning to exploit each other’s skills akin to the mode-collapse problem in GANs. In a recent paper from OpenAI, the training was done on randomly sampled historic copy of the agent to add regularisation to the learning.&lt;/p&gt;
+
+&lt;p&gt;Throwing away the negative data&lt;/p&gt;
+
+&lt;p&gt;Trajectories that lead to negative reward or an undesired states are, as training progresses, made less probable. However, even if the agent doesn’t reach the goal, the intermediate states it reaches, though undesirable for a particular goal, can be harnessed positively to achieve the goal of reaching that particular state in future i.e. most of the learning focusses on achieving only a particular goal and not on learning the model or build up a topological memory of the environment to speed up the learning process in future.&lt;/p&gt;
+
+&lt;p&gt;Only maximises the reward with no safety constraints&lt;/p&gt;
+
+&lt;p&gt;The objective function only focusses on the maximisation of the overall reward function without constraining the learnt policies in some way that are aligned with the value function of humans or safety constraints that allow to it operate in natural human environments without any catastrophic effects.&lt;/p&gt;
+
+&lt;p&gt;Limited to simulations environments&lt;/p&gt;
+
+&lt;p&gt;Because a simulator allows rendering at super high frame-rates and that the renderings can be parallelised over a large number of workers, simulated environments have greatly accelerated the progress of deep RL. However, because deep RL currently is very much dependent on simulated environments, it has been difficult to try on tasks which cannot be simulated easily e.g. folding a cloth. Whatever we cannot simulate, we cannot accomplish. Even the recent attempts at sim2real have mostly focussed on domain randomisation for possible transfer of those simulated environments to real world: randomising textures and camera positions as well as shapes of objects. However, domain randomisation grows exponentially as the number of objects increases as well as when the horizon of the task goes beyond a limit.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Touch sensing for grasping</title><link href="http://localhost:4000/touch-grasping/" rel="alternate" type="text/html" title="Touch sensing for grasping" /><published>2017-10-17T00:00:00+01:00</published><updated>2017-10-17T00:00:00+01:00</updated><id>http://localhost:4000/touch-grasping</id><content type="html" xml:base="http://localhost:4000/touch-grasping/">&lt;p&gt;Most grasping attempts in computer vision and robotics have primilarily been based on RGB images. Cameras are cheap and if you have a decent infrastructure to collect dataset (either in real world or simulations) you are in a very good spot to play with robotic grasping with vision. Grasping is a challenging problem but humans are often very good at determining an appropriate grasp location to hold an object or doing any complicated manipulation. This is largely in part due to our superior tactile sensing and extreme dexterity that the human hand offers.&lt;/p&gt;
+
+&lt;p&gt;Recently, a paper from BAIR, showed the benefits of adding tactile sensing on grasp outcome prediction. The two-finger gripper they used is equipped with GelSight high-res tactile sensor which provides raw-pixel measurements at a resolution of 1280x960 at 30Hz &lt;em&gt;i.e.&lt;/em&gt; the sensory data it provides is a standard 2D image which can be used in the same way a regular RGB image is used.&lt;/p&gt;
+
+&lt;p&gt;GelSight is a surface topography measurement device composed of an elastomer covered with a reflective skin. When an object presses against the surface, the skin deforms and takes the shape of the object’s surface. It is able to capture very fine details of the order of 2 microns. In contrast to the active and passive depth scanning, GelSight is able to obtain the surface topography of even transparent and surfaces with non-regular properties. It consists of three components:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;silicon gel that takes the shape of the object.&lt;/li&gt;
+  &lt;li&gt;coloured LEDs to illuminate the deformed membrane.&lt;/li&gt;
+  &lt;li&gt;camera to capture the images.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;The three-color LEDs illuminate the gel from different angles. Since each surface normal corresponds to a unique color, the color image captured by the camera can be directly used to reconstruct the depth map of the contact surface by looking up a calibrated color-surface normal table. This is the principle behind GelSight sensor.&lt;/p&gt;
+
+&lt;p&gt;In the following, we look at various surface deformations on the skin of the sensor for various objects provided as 2D images.
+&lt;img src=&quot;/images/touch-grasping-blog/GelSightImages.png&quot; alt=&quot;Alt Text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;How do they predict the successful grasp from vision and touch?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;They use a convolutional neural network, pre-trained ResNet-50, to to predict the grasp success outcome.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/touch-grasping-blog/GraspingArch.png&quot; alt=&quot;Alt Text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;More formally, the network produces &lt;script type=&quot;math/tex&quot;&gt;y = f(x)&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;x = (I_{RGB}, I_{GelSightL}, I_{GelSightR})&lt;/script&gt; where &lt;script type=&quot;math/tex&quot;&gt;I_{RGB}, I_{GelSightL}, I_{GelSightR}&lt;/script&gt; represent the image from the external frontal camera and the images from the two fingertip gelsight sensors (left and right) and &lt;script type=&quot;math/tex&quot;&gt;f&lt;/script&gt; is the ResNet-50 convolutional neural network. As the diagram suggests they take images for before and during grasping events presumably to get the gradient of the input that is fed to the network to produce the outcome. We will need some temporal information &lt;em&gt;i.e.&lt;/em&gt; the change that happened since the robot arm started moving.&lt;/p&gt;
+
+&lt;p&gt;However, there is a catch here - the model can only tell whether the grasp is successful or not after the gripper has closed its fingers around the object. Therefore, even at test time, they have to do random search within the vicinity of the object and find out which grasp is successful via their predict-and-evaluate procedure. This means they have to try many random grasps before they find out the current best grasp. It is not clear to me how the number of random grasps varies with different objects.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Limitations&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;I think the obvious limitation of this work is that the robot has to try various grasp locations at test time. Although it is natural to try and interact with the object to a few times to learn about the surface geometry to predict the best grasp but this work as of now doesn’t really do in a principled way. One could also argue that they don’t seem to maintain a memory of where they have grasped before which could potentially be used for build the 3D model online (may not even need tactile feedback here but a single camera SLAM could be potentially useful) and therefore, be more useful to find the optimal grasp. In a way they seem to use the sensor only for obtaining the heightmap when the grippers come in contact with the object. Maintaining the history of grasping within an RNN framework or within a SLAM framework could help potentially do an online gradient descent on the optimal grasp location.&lt;/p&gt;
+
+&lt;p&gt;If you have time constraints, the robot obviously cannot try random guesses and judge which one is best - it will need to be a principled way so that it does it within an allotted time budget which is something we should consider seriously when designing robotic systems. Also, I don’t think they do it in this paper - they could potentially use the random guesses and the corresponding success probabilities to obtain a heat-map of the optimal grasps and see how that changes according to object surfaces.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Closing thoughts&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Overall, I’m quite excited at the prospects of using tactile feedback for grasping and manipulation. This work is the first to present an end-to-end learned system for robotic grasping that combines visual and tactile sensing. Vision and touch sensors are quite complementary - vision helps get closer to the object and touch helps in interacting with it and provides immediate feedback on the quality of interaction. Historically, tactile sensing has been costly and sensitive and has not seen much use but sensors like GelSight offer a way to obtain precise surface geometry when the object is pressed against its skin.&lt;/p&gt;
+
+&lt;p&gt;It is also important to be pragmatic and use the appropriate tool/hardware whenever so that the inference algorithms are simpler and easier to train.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;References&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;R. Calandara &lt;em&gt;et al.&lt;/em&gt; &lt;strong&gt;The Feeling of Success:
+Does Touch Sensing Help Predict Grasp Outcomes?&lt;/strong&gt;, CoRL 2017.&lt;/p&gt;</content><author><name></name></author><summary type="html">Most grasping attempts in computer vision and robotics have primilarily been based on RGB images. Cameras are cheap and if you have a decent infrastructure to collect dataset (either in real world or simulations) you are in a very good spot to play with robotic grasping with vision. Grasping is a challenging problem but humans are often very good at determining an appropriate grasp location to hold an object or doing any complicated manipulation. This is largely in part due to our superior tactile sensing and extreme dexterity that the human hand offers.</summary></entry><entry><title type="html">Lecture on Policy Gradients</title><link href="http://localhost:4000/lecture-policy-gradients/" rel="alternate" type="text/html" title="Lecture on Policy Gradients" /><published>2017-10-10T00:00:00+01:00</published><updated>2017-10-10T00:00:00+01:00</updated><id>http://localhost:4000/lecture-policy-gradients</id><content type="html" xml:base="http://localhost:4000/lecture-policy-gradients/">&lt;script type=&quot;math/tex; mode=display&quot;&gt;\underbrace{p_{\theta}(s_1, a_1, ...., s_T, a_T)}_{\pi_{\theta}(\tau)} = p(s_1) \prod_{t=1}^{T} \pi_{\theta}(a_t | s_t) p(s_{t+1}| s_t, a_t)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^{*} = \operatorname{argmax}_{\theta}E_{\tau \sim p_{\theta}(\tau)} \bigg[\sum_{t} r(s_t, a_t) \bigg]&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\theta^{*} = \operatorname{argmax}_{\theta}\underbrace{E_{\tau \sim p_{\theta}(\tau)} \bigg[\sum_{t} r(s_t, a_t) \bigg]}_{J(\theta)}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = E_{\tau \sim p_{\theta}(\tau)} \bigg[\sum_{t} r(s_t, a_t) \bigg] \approx \frac{1}{N} \sum_{i} \sum_{t} r(s_{i,t}, a_{i,t})&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimising the policy&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us denote &lt;script type=&quot;math/tex&quot;&gt;r(\tau) = \sum_{t=1}^{T} r(s_t, a_t)&lt;/script&gt; and therefore, we can rewrite &lt;script type=&quot;math/tex&quot;&gt;J(\theta)&lt;/script&gt; as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;J(\theta) = E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)] = \int \pi_{\theta}(\tau) r(\tau) d\tau&lt;/script&gt;
+
+&lt;p&gt;Our goal is to maximise the expected reward. Therefore, differentiating this function yields&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta} J(\theta) = \int \nabla_{\theta} \pi_{\theta}(\tau) r(\tau) d\tau&lt;/script&gt;
+
+&lt;p&gt;A convenient identity to use here is that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\pi_{\theta}(\tau) \nabla_{\theta}\log \pi_{\theta}(\tau) = \nabla_{\theta}\pi_{\theta}(\tau)&lt;/script&gt;
+
+&lt;p&gt;Therefore, the overall gradient becomes&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta} J(\theta) = E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log \pi_{\theta}(\tau) r(\tau)]&lt;/script&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;The gradient tries to:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;increase probability of paths with positive reward.&lt;/li&gt;
+  &lt;li&gt;decrease probability of paths with negative reward.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Let us assume that the reward is always positive &lt;em&gt;i.e.&lt;/em&gt; r &amp;gt; 0 this will lead to increased probability of all paths. This isn’t exactly what we want. Therefore, we need a baseline to subtract to get an overall relative reward. In [Williams 92] it is shown that the baseline does not change the overall objective we are maximising.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log \pi_{\theta}(\tau) b] = \sum_{\tau} \nabla_{\theta} \pi_{\theta}(\tau) b&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{\tau} \nabla_{\theta} \pi_{\theta}(\tau) b = \nabla_{\theta}\sum_{\tau} ( \pi_{\theta}(\tau) b)&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\sum_{\tau} \nabla_{\theta} \pi_{\theta}(\tau) b = \nabla_{\theta}\sum_{\tau} ( \pi_{\theta}(\tau) b) = \nabla_{\theta}(b) = 0&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\implies \nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)] = \nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)-b]&lt;/script&gt;
+
+&lt;p&gt;Therefore, subtracting a baseline is unbiased in expectation. What possible choices of baseline can we consider?&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Constant baseline&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b=E[r(\tau)] \approx \frac{1}{m} \sum_{i=1}^m r(\tau^{i})&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Baseline that minimises the variance&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Remember that &lt;script type=&quot;math/tex&quot;&gt;Var[x] = E[x^2] - E[x]^2&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta}J(\theta) = E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)-b)]&lt;/script&gt;
+
+&lt;p&gt;We would like to optimise over b which minimises the variance of &lt;script type=&quot;math/tex&quot;&gt;\nabla_{\theta}J(\theta)&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;Let us denote &lt;script type=&quot;math/tex&quot;&gt;g(\tau) = \log \pi_{\theta}(\tau)&lt;/script&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Var = E_{\tau \sim \pi_{\theta}(\tau)}[(\nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)-b))^2] - E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)-b)]^2&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{dVar}{db} = \frac{d}{db}E[g(\tau)^2(r(\tau)-b)^2]&lt;/script&gt;
+
+&lt;p&gt;Remember that&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)] = \nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)-b]&lt;/script&gt;
+
+&lt;p&gt;The derivative of the second bit is therefore zero.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\frac{d}{db} (E[g(\tau)^2r(\tau)^2] - 2E[g(\tau)^2 r(\tau) b] + b^2 E[g(\tau)^2]) = 0&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\implies -2 E[g(\tau)^2 r(\tau)] + 2b E[g(\tau)^2] = 0&lt;/script&gt;
+
+&lt;p&gt;This yields&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b = \frac{E[g(\tau)^2 r(\tau)]}{E[g(\tau)^2]}&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Time-varying baseline&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b_t =\frac{1}{m} \sum_{i=1}^m \sum_{k=t}^{H-1} r(s_{k}^{i}, a_{k}^{i})&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Value function baseline that depends on the state&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;b(s_t) = V^{\pi}(s_t)&lt;/script&gt;
+
+&lt;p&gt;Increase the log probability of actions proportional to how much its returns are better than the expected return under the current policy.&lt;/p&gt;
+
+&lt;p&gt;but &lt;strong&gt;how do we estimate &lt;script type=&quot;math/tex&quot;&gt;V^{\pi}&lt;/script&gt;?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;We could do roll-outs with the current policy and then collect the rewards to go and regress &lt;script type=&quot;math/tex&quot;&gt;V^{\pi}&lt;/script&gt; as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\phi_{i+1} = \operatorname{argmin}_{\phi} \frac{1}{m} \sum_{i=1}^{m} \sum_{t=0}^{H-1} \bigg( V_{\phi}^{\pi}(s_t^{i}) - \sum_{k=t}^{H-1}r(s_{k}^{i}, a_{k}^{i}) \bigg)^2&lt;/script&gt;
+
+&lt;p&gt;where one could use &lt;script type=&quot;math/tex&quot;&gt;V_{\phi}^{\pi}(s_t) = \phi(s_t)^T w_s&lt;/script&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Caveat:&lt;/strong&gt; The same batch of trajectories should not be used for both fitting the value function baseline, as well as estimating &lt;script type=&quot;math/tex&quot;&gt;\nabla_{\theta}J&lt;/script&gt;, since it will lead to overfitting and a biased estimate. Thus, trajectories from iteration k−1 are used to fit the value function, essentially approximating &lt;script type=&quot;math/tex&quot;&gt;V^{\pi}_{k-1}&lt;/script&gt;, and use trajectories from iteration k for computing advantage, &lt;script type=&quot;math/tex&quot;&gt;A^{\pi}_{k}&lt;/script&gt; and &lt;script type=&quot;math/tex&quot;&gt;\nabla_{\theta} J&lt;/script&gt;.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Different DQN variations</title><link href="http://localhost:4000/different-DQN-algos/" rel="alternate" type="text/html" title="Different DQN variations" /><published>2017-09-10T00:00:00+01:00</published><updated>2017-09-10T00:00:00+01:00</updated><id>http://localhost:4000/different-DQN-algos</id><content type="html" xml:base="http://localhost:4000/different-DQN-algos/">&lt;p&gt;Over the years, different variations of the classic DQN have appeared each with their own attempt at reducing the amount of data needed to learn &lt;em&gt;i.e.&lt;/em&gt; data efficiency and increasing the overall performance racked against humans at the ATARI benchmarks. These variations are listed below.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Classic DQN&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L} = (R_{t+1} + \gamma_{t} \max_{a'} Q_{\bar{\theta}}  (S_{t+1}, a') - Q_{\theta}(S_{t}, A_{t}))^2&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Double DQN&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L} = (R_{t+1} + \gamma_{t} Q_{\bar{\theta}}(S_{t+1}, \underset{a'}{\operatorname{argmax}} Q_{\theta}  (S_{t+1}, a')) - Q_{\theta}(S_{t}, A_{t}))^2&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Prioritised Replay&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;p_t  \propto |R_{t+1} + \gamma_{t} \max_{a'} Q_{\bar{\theta}}  (S_{t+1}, a') - Q_{\theta}(S_{t}, A_{t})|^{\omega}&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Dueling Networks&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;Q_{\theta}(s, a) = V_{\eta}(f_{\xi}(s)) + A_{\phi}(f_{\xi}(s), a) - \frac{\sum_{a'} A_{\phi}(f_{\xi}(s), a')}{N_{actions}}&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;V&lt;/script&gt; is the value function and &lt;script type=&quot;math/tex&quot;&gt;A&lt;/script&gt; is the advantage function.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Multi-step Returns&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;R_{t}^{(n)} = \sum_{k=0}^{n-1} \gamma_{t}^{(k)} R_{t+k+1}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L} =  (R_{t}^{(n)} + \gamma_{t}^{(n)} \max_{a'} Q_{\bar{\theta}}  (S_{t+n}, a') - Q_{\theta}(S_{t}, A_{t}))^2&lt;/script&gt;
+
+&lt;p&gt;&lt;strong&gt;Distributional RL&lt;/strong&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;z^{i} = v_{min} + (i-1) \frac{v_{max}-v_{min}}{N_{atoms}-1}&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d_{t} = (\textbf{z}, p_{\theta}(S_t, A_t))&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;d^{'}_{t} = (R_{t+1} + \gamma_{t+1}\textbf{z}, p_{\bar{\theta}}(S_{t+1}, a^{*}_{t+1}))&lt;/script&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;\mathcal{L} = D_{KL}(\Phi_{z}d^{'}_{t} || d_{t})&lt;/script&gt;
+
+&lt;p&gt;where &lt;script type=&quot;math/tex&quot;&gt;\Phi_{z}&lt;/script&gt; is the projection operator as explained in the original distributional RL paper. The cross entropy &lt;script type=&quot;math/tex&quot;&gt;D_{KL}&lt;/script&gt; is minimised here instead of &lt;script type=&quot;math/tex&quot;&gt;L_{2}^{2}&lt;/script&gt; loss function as in classic DQN.&lt;/p&gt;
+
+&lt;p&gt;Important to remember that &lt;script type=&quot;math/tex&quot;&gt;\gamma&lt;/script&gt; is usually fixed in these algorithms but it can be learnt however for each different time-step. For a fixed gamma the time-horizon can be computed as&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;1 + \gamma + \gamma^2 + \gamma^3 + ... = \frac{1}{1-\gamma}&lt;/script&gt;
+
+&lt;p&gt;Therefore, the effective time-horizon for &lt;script type=&quot;math/tex&quot;&gt;\gamma=0.99&lt;/script&gt; is 100 time-steps.&lt;/p&gt;</content><author><name></name></author><summary type="html">Over the years, different variations of the classic DQN have appeared each with their own attempt at reducing the amount of data needed to learn i.e. data efficiency and increasing the overall performance racked against humans at the ATARI benchmarks. These variations are listed below.</summary></entry><entry><title type="html">DDPG Explained</title><link href="http://localhost:4000/ddpg-explained/" rel="alternate" type="text/html" title="DDPG Explained" /><published>2017-04-10T00:00:00+01:00</published><updated>2017-04-10T00:00:00+01:00</updated><id>http://localhost:4000/ddpg-explained</id><content type="html" xml:base="http://localhost:4000/ddpg-explained/">&lt;h2 id=&quot;ddpg&quot;&gt;DDPG&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Experience Replay&lt;/strong&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ReplayBuffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;__init__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random_seed&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;123&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buffer_size&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;buffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_filled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;random_seed&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;experience&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;s&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_filled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;append&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;experience&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;experience&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_filled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_filled&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;True&lt;/span&gt;
+
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_size&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_filled&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_size&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sample_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;lt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;and&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;buffer_filled&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;False&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;random&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;sample&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;buffer&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;s_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;a_batch&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;r_batch&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;t_batch&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;s2_batch&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;np&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;a_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;r_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;t_batch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s2_batch&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;clear&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;buffer&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+        &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;count&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><summary type="html">DDPG</summary></entry><entry><title type="html">Understanding The Rendering Equation</title><link href="http://localhost:4000/Understanding-The-Rendering-Equation/" rel="alternate" type="text/html" title="Understanding The Rendering Equation" /><published>2017-02-05T00:00:00+00:00</published><updated>2017-02-05T00:00:00+00:00</updated><id>http://localhost:4000/Understanding-The-Rendering-Equation</id><content type="html" xml:base="http://localhost:4000/Understanding-The-Rendering-Equation/">&lt;p&gt;An important step towards photo-immersive virtual reality (or computer generated photo-realistic renderings that our visual system can be duped and tricked easily to believe that it is real) is to be able to approximate the light transport happening in the real world. Real world is very chaotic and various complicated phenomena happen as photons travel from one medium to another in space. Obviously, our visual system is not capable of sampling the world at anything beyond 60Hz and therefore, we can never see in reality how photons move around, bounce off and interact with each other. However, given simple laws of optics, we can write down the light transport equation to a sufficient degree of accuracy that allows us to create a faithful representation of real world via ray tracing on a computer. The classic rendering equation lies at the heart of all ray tracers except that each one uses a different way to approximate and solve the equation. In its simplest form, the rendering equation is the following&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_o(x, \omega_r) =  L_{e}(x, \omega_r) + L_i(x, \omega_i) f(x, \omega_i, \omega_r) (\omega_i \cdot n)&lt;/script&gt;
+
+&lt;p&gt;Light leaving a surface at position $x$ in a direction $\omega_r$ is a sum of light emitted from the surface in that direction (most surfaces do not emit so this is generally zero except for light sources) and the incoming light from direction $\omega_i$ reflected in that direction, where $L_i$ is a incoming light intensity, $f(\cdot)$ is the surface BRDF which encodes the fraction of incoming light that is reflected from the surface as some of the light is absorbed by the surface,  $(\omega_i \cdot n)$ is the attenuation of the light and $n$ is the normal of the surface. If there are multiple light sources, one can simply sum the incident light from these sources in the equation and arrive at the following expression&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_o(x, \omega_r) = L_{e}(x, \omega_r) + \sum L_i(x, \omega_i) f(x, \omega_i, \omega_r) (\omega_i \cdot n)&lt;/script&gt;
+
+&lt;p&gt;However, an important assumption underpinning this equation is that $L_i$ is coming directly from a  light source. Therefore, this doesn’t take into account various other sources of incoming light &lt;em&gt;i.e.&lt;/em&gt; indirect light from a other surfaces falling at a point $x$. Indirect light is the light that reaches a surface after bouncing off from another. Therefore, if we consider the hemispherical volume around a point $x$ and integrate the incoming light from all directions, we obtain&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_o(x, \omega_r) = {L_{e}(x, \omega_r)} + \int_{\Omega} L_i(x, \omega_i) f(x, \omega_i, \omega_r) (\omega_i \cdot n) d \omega_{i}&lt;/script&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/rendering.png&quot; alt=&quot;Alt Text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Interestingly incident light at point $x$ from a direction $\omega_i$ is nothing but the reflected light $L_o$ from a point $\hat{x}$ in the direction $-\omega_i$. Therefore, the equation simplifies to&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_o(x, \omega_r) = L_{e}(x, \omega_r) + \int_{\Omega} L_o(\hat{x}, -\omega_i) f(x, \omega_i, \omega_r) (\omega_i \cdot n) d \omega_{i}&lt;/script&gt;
+
+&lt;p&gt;where $\hat{x}$ is obtained by casting a ray from the position $x$ in the direction $-\omega_i$ &lt;em&gt;i.e.&lt;/em&gt; $\hat{x}$ is the first surface point a ray hits when traversed back from $x$ in the direction $-\omega_i$. Therefore, at each point, the outgoing light in one direction is the inegral of incoming light from all directions multiplied by the surface reflectance property. This structure of the equation resembles the Fredholm integral of the form&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;l(u) = e(u) + \int l(v) K(u,v) dv&lt;/script&gt;
+
+&lt;p&gt;Discretising the hemispherical volume allows us to approximate this equation further and implement that on a computer.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_{o,j} = L_{e,j} + \sum_{i} L_{o,i} F_{i,j}&lt;/script&gt;
+
+&lt;p&gt;and this leads to the following matrix form&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{pmatrix}
+1-F_{1,1} &amp; -F_{1,2} &amp; \dots &amp; -F_{1,n}\\ 
+-F_{2,1}  &amp; 1-F_{2,2}  &amp; \dots  &amp; -F_{2,n} \\
+\vdots &amp; \vdots &amp; \dots &amp; \vdots \\
+-F_{n,1} &amp; -F_{n,2} &amp; \dots &amp; 1-F_{n,n} \\ 
+\end{pmatrix}
+ \begin{pmatrix} 
+ L_{o,1} \\ 
+L_{o,2} \\
+\vdots \\
+L_{o,n} \\
+\end{pmatrix} = \begin{pmatrix} 
+ L_{e,1} \\ 
+L_{e,2} \\
+\vdots \\
+L_{e,n} \\
+\end{pmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;This further simplifies to&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{pmatrix} 
+ L_{o,1} \\ 
+L_{o,2} \\
+\vdots \\
+L_{o,n} \\
+\end{pmatrix} = \begin{pmatrix} 
+ L_{e,1} \\ 
+L_{e,2} \\
+\vdots \\
+L_{e,n} \\
+\end{pmatrix} + \begin{pmatrix}
+F_{1,1} &amp; F_{1,2} &amp; \dots &amp; F_{1,n}\\ 
+F_{2,1}  &amp; F_{2,2}  &amp; \dots  &amp; F_{2,n} \\
+\vdots &amp; \vdots &amp; \dots &amp; \vdots \\
+F_{n,1} &amp; F_{n,2} &amp; \dots &amp; F_{n,n} \\ 
+\end{pmatrix}
+ \begin{pmatrix} 
+L_{o,1} \\ 
+L_{o,2} \\
+\vdots \\
+L_{o,n} \\
+\end{pmatrix} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;Such equations often appear in standard inverse problems in computer vision and are solved via jacobi iteration recurrence of the form&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;L_{o}^{k} = L_{e} + F L_{o}^{k-1}&lt;/script&gt;
+
+&lt;p&gt;where $k$ denotes the iteration number. One may be able to also derive similar expression using binomial theorem &lt;em&gt;i.e.&lt;/em&gt;&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;(I - F)L_{o} = L_{e} \\
+L_{o} = (I - F)^{-1}L_{e} \\
+L_{o} = (I + F + F^{2} + F^{3}...) L_{e}\\&lt;/script&gt;
+
+&lt;p&gt;In the following, we see four iterations of this recurrence and also how each iteration creates a more visually appealing image.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/L_e.png&quot; width=&quot;150&quot; /&gt;
+&lt;img src=&quot;/images/L_epKL_e.png&quot; width=&quot;150&quot; /&gt;
+&lt;img src=&quot;/images/L_epKL_epK2L_e.png&quot; width=&quot;150&quot; /&gt;
+&lt;img src=&quot;/images/L_epKL_epK2L_epK3L_e.png&quot; width=&quot;150&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In the first iteration, we see there is no outgoing light from any surface and only light source emits the light as a result it is very bright. However, this light then propagates across the surfaces and the floor and walls start to accumulate the color while ceiling still looks black because there is no transport of light from other surfaces to ceiling yet. In the next two iterations we see that the ceiling starts to accumulate the colour as well and we know now that the light transport is happening from every surface to every other surface.&lt;/p&gt;</content><author><name></name></author><summary type="html">An important step towards photo-immersive virtual reality (or computer generated photo-realistic renderings that our visual system can be duped and tricked easily to believe that it is real) is to be able to approximate the light transport happening in the real world. Real world is very chaotic and various complicated phenomena happen as photons travel from one medium to another in space. Obviously, our visual system is not capable of sampling the world at anything beyond 60Hz and therefore, we can never see in reality how photons move around, bounce off and interact with each other. However, given simple laws of optics, we can write down the light transport equation to a sufficient degree of accuracy that allows us to create a faithful representation of real world via ray tracing on a computer. The classic rendering equation lies at the heart of all ray tracers except that each one uses a different way to approximate and solve the equation. In its simplest form, the rendering equation is the following</summary></entry><entry><title type="html">Hello World!</title><link href="http://localhost:4000/Hello-World/" rel="alternate" type="text/html" title="Hello World!" /><published>2014-03-03T00:00:00+00:00</published><updated>2014-03-03T00:00:00+00:00</updated><id>http://localhost:4000/Hello-World</id><content type="html" xml:base="http://localhost:4000/Hello-World/">&lt;!--Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below). --&gt;
+
+&lt;!--![_config.yml](/images/config.png)--&gt;
+
+&lt;!--The easiest way to make your first post is to edit this one. Go into /_posts/ and update the Hello World markdown file. For more instructions head over to the [Jekyll Now repository](https://github.com/barryclark/jekyll-now) on GitHub.--&gt;</content><author><name></name></author><summary type="html"></summary></entry></feed>

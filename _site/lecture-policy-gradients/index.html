@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lecture on Policy Gradients – Ankur Handa – writing my views on things I like</title>
+  
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="
+
+" />
+    <meta property="og:description" content="
+
+" />
+    
+    <meta name="author" content="Ankur Handa" />
+
+    
+    <meta property="og:title" content="Lecture on Policy Gradients" />
+    <meta property="twitter:title" content="Lecture on Policy Gradients" />
+    
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Ankur Handa - writing my views on things I like" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+		TeX: {
+		equationNumbers: {
+		autoNumber: "AMS"
+		}
+		},
+		tex2jax: {
+		inlineMath: [ ['$','$'], ['\\(', '\\)'] ],
+		displayMath: [ ['$$','$$'] ],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		}
+		});
+    </script>
+
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Queue(function(){
+		var all = MathJax.Hub.getAllJax(), i;
+		for(i = 0; i < all.length; i += 1)
+		{
+		all[i].SourceElement().parentNode.className += ' has-jax';
+		}
+		});
+	</script>
+
+	<script type="text/javascript" async
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Ankur Handa</a></h1>
+            <p class="site-description">writing my views on things I like</p>
+          </div>
+
+          <nav>
+            <a href="/about">About</a>
+            <a href="/">Blog</a>
+            <a href="/publications">Publications</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <article class="post">
+  <h1>Lecture on Policy Gradients</h1>
+
+  <div class="entry">
+    <script type="math/tex; mode=display">\underbrace{p_{\theta}(s_1, a_1, ...., s_T, a_T)}_{\pi_{\theta}(\tau)} = p(s_1) \prod_{t=1}^{T} \pi_{\theta}(a_t | s_t) p(s_{t+1}| s_t, a_t)</script>
+
+<script type="math/tex; mode=display">\theta^{*} = \operatorname{argmax}_{\theta}E_{\tau \sim p_{\theta}(\tau)} \bigg[\sum_{t} r(s_t, a_t) \bigg]</script>
+
+<script type="math/tex; mode=display">\theta^{*} = \operatorname{argmax}_{\theta}\underbrace{E_{\tau \sim p_{\theta}(\tau)} \bigg[\sum_{t} r(s_t, a_t) \bigg]}_{J(\theta)}</script>
+
+<script type="math/tex; mode=display">J(\theta) = E_{\tau \sim p_{\theta}(\tau)} \bigg[\sum_{t} r(s_t, a_t) \bigg] \approx \frac{1}{N} \sum_{i} \sum_{t} r(s_{i,t}, a_{i,t})</script>
+
+<hr />
+
+<p><strong>Optimising the policy</strong></p>
+
+<p>Let us denote <script type="math/tex">r(\tau) = \sum_{t=1}^{T} r(s_t, a_t)</script> and therefore, we can rewrite <script type="math/tex">J(\theta)</script> as</p>
+
+<script type="math/tex; mode=display">J(\theta) = E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)] = \int \pi_{\theta}(\tau) r(\tau) d\tau</script>
+
+<p>Our goal is to maximise the expected reward. Therefore, differentiating this function yields</p>
+
+<script type="math/tex; mode=display">\nabla_{\theta} J(\theta) = \int \nabla_{\theta} \pi_{\theta}(\tau) r(\tau) d\tau</script>
+
+<p>A convenient identity to use here is that</p>
+
+<script type="math/tex; mode=display">\pi_{\theta}(\tau) \nabla_{\theta}\log \pi_{\theta}(\tau) = \nabla_{\theta}\pi_{\theta}(\tau)</script>
+
+<p>Therefore, the overall gradient becomes</p>
+
+<script type="math/tex; mode=display">\nabla_{\theta} J(\theta) = E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log \pi_{\theta}(\tau) r(\tau)]</script>
+
+<hr />
+
+<p>The gradient tries to:</p>
+
+<ul>
+  <li>increase probability of paths with positive reward.</li>
+  <li>decrease probability of paths with negative reward.</li>
+</ul>
+
+<p>Let us assume that the reward is always positive <em>i.e.</em> r &gt; 0 this will lead to increased probability of all paths. This isn’t exactly what we want. Therefore, we need a baseline to subtract to get an overall relative reward. In [Williams 92] it is shown that the baseline does not change the overall objective we are maximising.</p>
+
+<script type="math/tex; mode=display">E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta}\log \pi_{\theta}(\tau) b] = \sum_{\tau} \nabla_{\theta} \pi_{\theta}(\tau) b</script>
+
+<script type="math/tex; mode=display">\sum_{\tau} \nabla_{\theta} \pi_{\theta}(\tau) b = \nabla_{\theta}\sum_{\tau} ( \pi_{\theta}(\tau) b)</script>
+
+<script type="math/tex; mode=display">\sum_{\tau} \nabla_{\theta} \pi_{\theta}(\tau) b = \nabla_{\theta}\sum_{\tau} ( \pi_{\theta}(\tau) b) = \nabla_{\theta}(b) = 0</script>
+
+<script type="math/tex; mode=display">\implies \nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)] = \nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)-b]</script>
+
+<p>Therefore, subtracting a baseline is unbiased in expectation. What possible choices of baseline can we consider?</p>
+
+<p><strong>Constant baseline</strong></p>
+
+<script type="math/tex; mode=display">b=E[r(\tau)] \approx \frac{1}{m} \sum_{i=1}^m r(\tau^{i})</script>
+
+<p><strong>Baseline that minimises the variance</strong></p>
+
+<p>Remember that <script type="math/tex">Var[x] = E[x^2] - E[x]^2</script></p>
+
+<script type="math/tex; mode=display">\nabla_{\theta}J(\theta) = E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)-b)]</script>
+
+<p>We would like to optimise over b which minimises the variance of <script type="math/tex">\nabla_{\theta}J(\theta)</script></p>
+
+<p>Let us denote <script type="math/tex">g(\tau) = \log \pi_{\theta}(\tau)</script></p>
+
+<script type="math/tex; mode=display">Var = E_{\tau \sim \pi_{\theta}(\tau)}[(\nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)-b))^2] - E_{\tau \sim \pi_{\theta}(\tau)}[\nabla_{\theta} \log \pi_{\theta}(\tau) (r(\tau)-b)]^2</script>
+
+<script type="math/tex; mode=display">\frac{dVar}{db} = \frac{d}{db}E[g(\tau)^2(r(\tau)-b)^2]</script>
+
+<p>Remember that</p>
+
+<script type="math/tex; mode=display">\nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)] = \nabla_{\theta} E_{\tau \sim \pi_{\theta}(\tau)}[r(\tau)-b]</script>
+
+<p>The derivative of the second bit is therefore zero.</p>
+
+<script type="math/tex; mode=display">\frac{d}{db} (E[g(\tau)^2r(\tau)^2] - 2E[g(\tau)^2 r(\tau) b] + b^2 E[g(\tau)^2]) = 0</script>
+
+<script type="math/tex; mode=display">\implies -2 E[g(\tau)^2 r(\tau)] + 2b E[g(\tau)^2] = 0</script>
+
+<p>This yields</p>
+
+<script type="math/tex; mode=display">b = \frac{E[g(\tau)^2 r(\tau)]}{E[g(\tau)^2]}</script>
+
+<p><strong>Time-varying baseline</strong></p>
+
+<script type="math/tex; mode=display">b_t =\frac{1}{m} \sum_{i=1}^m \sum_{k=t}^{H-1} r(s_{k}^{i}, a_{k}^{i})</script>
+
+<p><strong>Value function baseline that depends on the state</strong></p>
+
+<script type="math/tex; mode=display">b(s_t) = V^{\pi}(s_t)</script>
+
+<p>Increase the log probability of actions proportional to how much its returns are better than the expected return under the current policy.</p>
+
+<p>but <strong>how do we estimate <script type="math/tex">V^{\pi}</script>?</strong></p>
+
+<p>We could do roll-outs with the current policy and then collect the rewards to go and regress <script type="math/tex">V^{\pi}</script> as</p>
+
+<script type="math/tex; mode=display">\phi_{i+1} = \operatorname{argmin}_{\phi} \frac{1}{m} \sum_{i=1}^{m} \sum_{t=0}^{H-1} \bigg( V_{\phi}^{\pi}(s_t^{i}) - \sum_{k=t}^{H-1}r(s_{k}^{i}, a_{k}^{i}) \bigg)^2</script>
+
+<p>where one could use <script type="math/tex">V_{\phi}^{\pi}(s_t) = \phi(s_t)^T w_s</script></p>
+
+<p><strong>Caveat:</strong> The same batch of trajectories should not be used for both fitting the value function baseline, as well as estimating <script type="math/tex">\nabla_{\theta}J</script>, since it will lead to overfitting and a biased estimate. Thus, trajectories from iteration k−1 are used to fit the value function, essentially approximating <script type="math/tex">V^{\pi}_{k-1}</script>, and use trajectories from iteration k for computing advantage, <script type="math/tex">A^{\pi}_{k}</script> and <script type="math/tex">\nabla_{\theta} J</script>.</p>
+
+  </div>
+
+  <div class="date">
+    Written on October 10, 2017
+  </div>
+
+  
+</article>
+
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>

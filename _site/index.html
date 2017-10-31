@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ankur Handa – writing my views on things I like</title>
+  
+        <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    
+    <meta name="description" content="writing my views on things I like">
+    <meta property="og:description" content="writing my views on things I like" />
+    
+    <meta name="author" content="Ankur Handa" />
+
+    
+
+    <link rel="stylesheet" type="text/css" href="/style.css" />
+    <link rel="alternate" type="application/rss+xml" title="Ankur Handa - writing my views on things I like" href="/feed.xml" />
+
+    <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
+    
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+		TeX: {
+		equationNumbers: {
+		autoNumber: "AMS"
+		}
+		},
+		tex2jax: {
+		inlineMath: [ ['$','$'], ['\\(', '\\)'] ],
+		displayMath: [ ['$$','$$'] ],
+		processEscapes: true,
+		processEnvironments: true,
+		skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+		}
+		});
+    </script>
+
+	<script type="text/x-mathjax-config">
+	MathJax.Hub.Queue(function(){
+		var all = MathJax.Hub.getAllJax(), i;
+		for(i = 0; i < all.length; i += 1)
+		{
+		all[i].SourceElement().parentNode.className += ' has-jax';
+		}
+		});
+	</script>
+
+	<script type="text/javascript" async
+	src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+	</script>
+
+  </head>
+
+  <body>
+    <div class="wrapper-masthead">
+      <div class="container">
+        <header class="masthead clearfix">
+          <a href="/" class="site-avatar"><img src="" /></a>
+
+          <div class="site-info">
+            <h1 class="site-name"><a href="/">Ankur Handa</a></h1>
+            <p class="site-description">writing my views on things I like</p>
+          </div>
+
+          <nav>
+            <a href="/about">About</a>
+            <a href="/">Blog</a>
+            <a href="/publications">Publications</a>
+          </nav>
+        </header>
+      </div>
+    </div>
+
+    <div id="main" role="main" class="container">
+      <div class="posts">
+  
+    <article class="post">
+
+      <h1><a href="/current-deep-rl/">Where does current deep RL stand?</a></h1>
+
+      <div class="entry">
+        <p><img src="/images/simulated_classroom.jpg" alt="simulations are rewarding but can be far from reality" /></p>
+
+
+      </div>
+
+      <a href="/current-deep-rl/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="/touch-grasping/">Touch sensing for grasping</a></h1>
+
+      <div class="entry">
+        <p>Most grasping attempts in computer vision and robotics have primilarily been based on RGB images. Cameras are cheap and if you have a decent infrastructure to collect dataset (either in real world or simulations) you are in a very good spot to play with robotic grasping with vision. Grasping is a challenging problem but humans are often very good at determining an appropriate grasp location to hold an object or doing any complicated manipulation. This is largely in part due to our superior tactile sensing and extreme dexterity that the human hand offers.</p>
+
+
+      </div>
+
+      <a href="/touch-grasping/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="/lecture-policy-gradients/">Lecture on Policy Gradients</a></h1>
+
+      <div class="entry">
+        <script type="math/tex; mode=display">\underbrace{p_{\theta}(s_1, a_1, ...., s_T, a_T)}_{\pi_{\theta}(\tau)} = p(s_1) \prod_{t=1}^{T} \pi_{\theta}(a_t | s_t) p(s_{t+1}| s_t, a_t)</script>
+
+
+      </div>
+
+      <a href="/lecture-policy-gradients/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="/different-DQN-algos/">Different DQN variations</a></h1>
+
+      <div class="entry">
+        <p>Over the years, different variations of the classic DQN have appeared each with their own attempt at reducing the amount of data needed to learn <em>i.e.</em> data efficiency and increasing the overall performance racked against humans at the ATARI benchmarks. These variations are listed below.</p>
+
+
+      </div>
+
+      <a href="/different-DQN-algos/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="/ddpg-explained/">DDPG Explained</a></h1>
+
+      <div class="entry">
+        <h2 id="ddpg">DDPG</h2>
+
+
+      </div>
+
+      <a href="/ddpg-explained/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="/Understanding-The-Rendering-Equation/">Understanding The Rendering Equation</a></h1>
+
+      <div class="entry">
+        <p>An important step towards photo-immersive virtual reality (or computer generated photo-realistic renderings that our visual system can be duped and tricked easily to believe that it is real) is to be able to approximate the light transport happening in the real world. Real world is very chaotic and various complicated phenomena happen as photons travel from one medium to another in space. Obviously, our visual system is not capable of sampling the world at anything beyond 60Hz and therefore, we can never see in reality how photons move around, bounce off and interact with each other. However, given simple laws of optics, we can write down the light transport equation to a sufficient degree of accuracy that allows us to create a faithful representation of real world via ray tracing on a computer. The classic rendering equation lies at the heart of all ray tracers except that each one uses a different way to approximate and solve the equation. In its simplest form, the rendering equation is the following</p>
+
+
+      </div>
+
+      <a href="/Understanding-The-Rendering-Equation/" class="read-more">Read More</a>
+    </article>
+  
+    <article class="post">
+
+      <h1><a href="/Hello-World/">Hello World!</a></h1>
+
+      <div class="entry">
+        <!--Next you can update your site name, avatar and other options using the _config.yml file in the root of your repository (shown below). -->
+
+
+      </div>
+
+      <a href="/Hello-World/" class="read-more">Read More</a>
+    </article>
+  
+</div>
+    </div>
+
+    <div class="wrapper-footer">
+      <div class="container">
+        <footer class="footer">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+        </footer>
+      </div>
+    </div>
+
+    
+
+  </body>
+</html>
