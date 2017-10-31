@@ -2,7 +2,7 @@
 title: Where does current deep RL stand?
 ---
 
-![simulations are rewarding but can be far from reality](/images/sim_class.jpg) 
+![simulations are rewarding but can be far from reality](/images/sim_class.jpg?style=centerme)
 
 Recent advances have certainly highlighted what can be possibly be achieved with current state of the art with deep RL. However, bigger questions remain as the progress has come with various assumptions (consequently the limitations) which the methods often do not convey explicitly. Some of the (obvious and not so obvious) limitations that the current deep RL is riddled with are explained in detail below: 
 
