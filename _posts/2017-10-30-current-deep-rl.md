@@ -1,7 +1,7 @@
 ---
 title: Where does current deep RL stand?
 ---
-| ![space-1.jpg](/images/sim_class.jpg) | 
+|   ![space-1.jpg](/images/sim_class.jpg) | 
 |:--:| 
 | *simulations are "rewarding" but can still be far from reality* |
 
@@ -12,7 +12,7 @@ Recent advances have certainly highlighted what can be possibly be achieved with
 
 **Exploration:**
 
-One of the primary reasons why RL has been extremely finicky and tricky to get to work is the exponentially growing search space that an RL algorithm must explore in pursuit of finding the actions that lead to high expected rewards. This, however, scales exponentially as the dimensions of the state and action space increase. An obvious solution is to have multiple workers doing explorations in parallel but at some point even that starts to hit a fundamental limit due to the curse of dimensionality. Such kind of brute-force search isn’t ideal and feasible often in many cases. In real world, where a robot is interacting with the environment, it is at times costly or impossible to carry out exploration at a scale needed for many RL algorithms. Often in simulations, one can run the world faster than real-time but it is not possible to run the real world faster than real-time. Even the choice of having multiple workers starts to get tricky because robots are costly and maintaining them to work non-stop without any damage or provide repeatable motion is extremely hard over long periods of time. 
+One of the primary reasons why RL has been extremely finicky and tricky to get to work is the exponentially growing search space that an RL algorithm must explore in pursuit of finding the actions that lead to high expected rewards. This, however, scales exponentially as the dimensions of the state and action space increase. An obvious solution is to have multiple workers doing explorations in parallel but at some point even that starts to hit a fundamental limit due to the curse of dimensionality. Such kind of brute-force search isn’t ideal and feasible often in many cases. In real world, where a robot is interacting with the environment, it is at times costly or impossible to carry out exploration at a scale needed for many RL algorithms. Often in simulations, one can run the world faster than real-time but real world cannot be run faster in real-world. Even the choice of having multiple workers starts to get tricky because robots are costly and maintaining them to work non-stop without any damage or provide repeatable motion is extremely hard over long periods of time. 
 
 **Sensitivity to various hyper-parameters**
 
