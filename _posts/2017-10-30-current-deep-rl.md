@@ -6,7 +6,7 @@ title: Where does current deep RL stand?
 
 Recent advances have certainly highlighted what can be possibly be achieved with current state of the art with deep RL. However, bigger questions remain as the progress has come with various assumptions (consequently the limitations) which the methods often do not convey explicitly. Some of the (obvious and not so obvious) limitations that the current deep RL is riddled with are explained in detail below: 
 
-## Very obvious
+## Obvious
 ---
 
 **Exploration:**
@@ -25,7 +25,7 @@ In most RL algorithms training and testing happens on the same environment. This
 
 Using a fixed gamma, the discount factor, already limits the number of time steps in future that can be affected by the current action. For instance, using a discount factor of 0.99 means that the current action can only affect the next 100 time steps  (geometric progression) and therefore, it cannot solve long time horizon tasks, particularly that require planning for long time. 
 
-Sparse rewards very difficult to train
+**Sparse rewards very difficult to train**
 
 Consider training with policy gradients where the reward is only obtained at the end of the episode. Since each action’s log-likelihood is scaled by the reward to go (the Q value or the Advantage function) it is zero for those cases where there is no reward and therefore, very difficult to train. Because the gradient is zero it is impossible for the algorithm to get any signal for that move. Most ATARI environments provide fairly dense reward and hence it has been possible to train with standard DQN and policy gradients.
 
