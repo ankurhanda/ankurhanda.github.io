@@ -29,6 +29,10 @@ Using a fixed gamma, the discount factor, already limits the number of time step
 
 Consider training with policy gradients where the reward is only obtained at the end of the episode. Since each action’s log-likelihood is scaled by the reward to go (the Q value or the Advantage function) it is zero for those cases where there is no reward and therefore, very difficult to train. Because the gradient is zero it is impossible for the algorithm to get any signal for that move. Most ATARI environments provide fairly dense reward and hence it has been possible to train with standard DQN and policy gradients.
 
+**Reward shaping**
+
+In many RL environments, often used in the community, appropriate reward shaping is done to provide enough gradients to do any learning. 
+
 **Limited to simulations environments**
 
 Because a simulator allows rendering at super high frame-rates and that the renderings can be parallelised over a large number of workers, simulated environments have greatly accelerated the progress of deep RL. However, because deep RL currently is very much dependent on simulated environments, it has been difficult to try on tasks which cannot be simulated easily e.g. folding a cloth. Whatever we cannot simulate, we cannot accomplish. Even the recent attempts at sim2real have mostly focussed on domain randomisation for possible transfer of those simulated environments to real world: randomising textures and camera positions as well as shapes of objects. However, domain randomisation grows exponentially as the number of objects increases as well as when the horizon of the task goes beyond a limit.
