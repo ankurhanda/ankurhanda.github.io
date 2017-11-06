@@ -12,7 +12,7 @@ My research interests lie in robotics, machine learning and novel hardware.
 
 Some of the robotic platforms and rigs that I built in the past and used in my undergrad and PhD are 
 
-**SPAWN, 2008:** 
+**SPAWN** 
 
 <img src="/images/SPAWN005.jpg" width="150">
 <img src="/images/SPAWN009.jpg" width="265">
@@ -21,7 +21,7 @@ Some of the robotic platforms and rigs that I built in the past and used in my u
 <img src="/images/SPAWN016.jpg" width="210">
 
 
-**HFRDynamixel, 2012:**
+**HFRDynamixel**
 
 <img src="/images/HFRDynamixel.png" width="640">
 
