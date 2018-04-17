@@ -40,7 +40,7 @@ permalink: /publications/
 
 **Robust real-time visual odometry for stereo endoscopy using dense quadrifocal tracking** _Ping-Lin Chang, Ankur Handa, Andrew Davison, Daniel Stoyanov_, **IPCAI 2014**
 
-**Simultaneous Mosaicing and Tracking with an Event Camera.** _Hanme Kim, Ankur Handa, Ryad Benosman, Sio-Hoi Ieng, Andrew Davison_, **BMVC 2014**
+**Simultaneous Mosaicing and Tracking with an Event Camera.** _Hanme Kim, Ankur Handa, Ryad Benosman, Sio-Hoi Ieng, Andrew Davison_, **BMVC 2014** **(Best Industry Paper Prize)**
 
 **A Benchmark for RGB-D Visual Odometry, 3D Reconstruction and SLAM** _Ankur Handa, Thomas Whelan, John McDonald, Andrew Davison_, **ICRA 2014**
 
