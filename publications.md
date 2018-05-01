@@ -24,7 +24,13 @@ permalink: /publications/
 
 **Self-Supervised Siamese Learning on Stereo Image Pairs for Depth Estimation in Robotic Surgery.** _Menglong Ye, Ed Johns, Ankur Handa, Lin Zhang, Philip Pratt, Guang-Zhong Yang_, **HSMR 2017**
 
+<hr>
 **SemanticFusion: Dense 3D semantic mapping with convolutional neural networks** _John McCormac, Ankur Handa, Andrew Davison, Stefan Leutenegger_, **ICRA 2017**
+
+<br>
+<img align="left" src="/images/pubs/ICRA2017.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: Ever more robust, accurate and detailed mapping using visual sensing has proven to be an enabling factor for mobile robots across a wide variety of applications. For the next level of robot intelligence and intuitive user interaction, maps need to extend beyond geometry and appearance — they need to contain semantics. We address this challenge by combining Convolutional Neural Networks (CNNs) and a state-of-the-art dense Simultaneous Localisation and Mapping (SLAM) system, ElasticFusion, which provides long-term dense correspondences between frames of indoor RGB-D video even during loopy scanning trajectories. These correspondences allow the CNN’s semantic predictions from multiple view points to be probabilistically fused into a map. This not only produces a useful semantic 3D map, but we also show on the NYUv2 dataset that fusing multiple predictions leads to an improvement even in the 2D semantic labelling over baseline single frame predictions. We also show that for a smaller reconstruction dataset with larger variation in prediction viewpoint, the improvement over single frame segmentation increases. Our system is efficient enough to allow real-time interactive use at frame-rates of ≈25Hz.
+ </span>
+ <hr>
 
 ### 2016 
 
