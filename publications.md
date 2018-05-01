@@ -68,7 +68,16 @@ permalink: /publications/
 
 **Robust real-time visual odometry for stereo endoscopy using dense quadrifocal tracking** _Ping-Lin Chang, Ankur Handa, Andrew Davison, Daniel Stoyanov_, **IPCAI 2014**
 
+<hr>
+
 **Simultaneous Mosaicing and Tracking with an Event Camera.** _Hanme Kim, Ankur Handa, Ryad Benosman, Sio-Hoi Ieng, Andrew Davison_, **BMVC 2014** **(Best Industry Paper Prize)**
+
+<br>
+<img align="left" src="/images/pubs/BMVC_2014.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: An event camera is a silicon retina which outputs not a sequence of video frames like a standard camera, but a stream of asynchronous spikes, each with pixel location, sign and precise timing, indicating when individual pixels record a threshold log intensity change. By encoding only image change, it offers the potential to transmit the information in a standard video but at vastly reduced bitrate, and with huge added advantages of very high dynamic range and temporal resolution. However, event data calls for new algorithms, and in particular we believe that algorithms which incrementally estimate global scene models are best placed to take full advantages of its properties. Here, we show for the first time that an event stream, with no additional sensing, can be used to track accurate camera rotation while building a persistent and high quality mosaic of a scene which is super-resolution accurate and has high dynamic range. Our method involves parallel camera rotation tracking and template reconstruction from estimated gradients, both operating on an event-by event basis and based on probabilistic filtering.
+ </span>
+ <hr>
+
+
 
 **A Benchmark for RGB-D Visual Odometry, 3D Reconstruction and SLAM** _Ankur Handa, Thomas Whelan, John McDonald, Andrew Davison_, **ICRA 2014**
 
