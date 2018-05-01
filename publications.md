@@ -81,6 +81,11 @@ permalink: /publications/
 
 **A Benchmark for RGB-D Visual Odometry, 3D Reconstruction and SLAM** _Ankur Handa, Thomas Whelan, John McDonald, Andrew Davison_, **ICRA 2014**
 
+<br>
+<img align="left" src="/images/pubs/ICRA2014.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: We introduce the Imperial College London and National University of Ireland Maynooth (ICL-NUIM) dataset for the evaluation of visual odometry, 3D reconstruction and SLAM algorithms that typically use RGB-D data. We present a collection of handheld RGB-D camera sequences within synthetically generated environments. RGB-D sequences with perfect ground truth poses are provided as well as a ground truth surface model that enables a method of quantitatively evaluating the final map or surface reconstruction accuracy. Care has been taken to simulate typically observed real-world artefacts in the synthetic imagery by modelling sensor noise in both RGB and depth data. While this dataset is useful for the evaluation of visual odometry and SLAM trajectory estimation, our main focus is on providing a method to benchmark the surface reconstruction accuracy which to date has been missing in the RGB-D community despite the plethora of ground truth RGB-D datasets available.
+ </span>
+ <hr>
+
 ### 2013 and earlier
 
 **Analysing high frame-rate camera tracking** _Ankur Handa_, **PhD Thesis 2013** 
