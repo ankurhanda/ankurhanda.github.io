@@ -43,7 +43,14 @@ permalink: /publications/
 
 **Spatio-temporal video autoencoder with differentiable memory.** _Viorica Pătrăucean, Ankur Handa, Roberto Cipolla_, **ICLRWorkshop 2016**
 
+<hr>
 **Understanding real world indoor scenes with synthetic data.** _Ankur Handa, Viorica Pătrăucean, Vijay Badrinarayanan, Simon Stent, Roberto Cipolla_, **CVPR 2016**
+
+<br>
+<img align="left" src="/images/pubs/SceneNet_CVPR2016.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: Scene understanding is a prerequisite to many high level tasks for any automated intelligent machine operating in real world environments. Recent attempts with supervised learning have shown promise in this direction but also highlighted the need for enormous quantity of supervised data --- performance increases in proportion to the amount of data used. However, this quickly becomes prohibitive when considering the manual labour needed to collect such data. In this work, we focus our attention on depth based semantic per-pixel labelling as a scene understanding problem and show the potential of computer graphics to generate virtually unlimited labelled data from synthetic 3D scenes. By carefully synthesizing training data with appropriate noise models we show comparable performance to state-of-the-art RGBD systems on NYUv2 dataset despite using only depth data as input and set a benchmark on depth-based segmentation on SUN RGB-D dataset. Additionally, we offer a route to generating synthesized frame or video data, and understanding of different factors influencing performance gains.
+ </span>
+ <hr>
+
 
 ### 2015 
 
