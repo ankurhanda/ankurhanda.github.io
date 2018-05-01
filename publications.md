@@ -40,7 +40,12 @@ permalink: /publications/
 
 **SceneNet RGB-D: 5M Photorealistic Images of Synthetic Indoor Trajectories with Ground Truth.** _John McCormac, Ankur Handa, Stefan Leutenegger, Andrew Davison_, **arXiv, 2016**
 
+<hr>
+
 **HDRFusion: HDR SLAM using a low-cost auto-exposure RGB-D sensor.** _Shuda Li, Ankur Handa, Yang Zhang, Andrew Calway,_ **3DV 2016**
+<br>
+<img align="left" src="/images/pubs/HDRFusion.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: We describe a new method for comparing frame appearance in a frame-to-model 3-D mapping and tracking system using an low dynamic range (LDR) RGB-D camera which is robust to brightness changes caused by auto exposure. It is based on a normalised radiance measure which is invariant to exposure changes and not only robustifies the tracking under changing lighting conditions, but also enables the following exposure compensation perform accurately to allow online building of high dynamic range (HDR) maps. The latter facilitates the frame-to-model tracking to minimise drift as well as better capturing light variation within the scene. Results from experiments with synthetic and real data demonstrate that the method provides both improved tracking and maps with far greater dynamic range of luminosity.
+ </span>
 
 <hr>
 
@@ -77,7 +82,6 @@ permalink: /publications/
 <br>
 <img align="left" src="/images/pubs/SegNet2015.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: We propose a novel deep architecture, SegNet, for semantic pixel wise image labelling. SegNet has several attractive properties; (i) it only requires forward evaluation of a fully learnt function to obtain smooth label predictions, (ii) with increasing depth, a larger context is considered for pixel labelling which improves accuracy, and (iii) it is easy to visualise the effect of feature activation(s) in the pixel label space at any depth. SegNet is composed of a stack of encoders followed by a corresponding decoder stack which feeds into a soft-max classification layer. The decoders help map low resolution feature maps at the output of the encoder stack to full input image size feature maps. This addresses an important drawback of recent deep learning approaches which have adopted networks designed for object categorization for pixel wise labelling. These methods lack a mechanism to map deep layer feature maps to input dimensions. They resort to ad hoc methods to upsample features, e.g. by replication. This results in noisy predictions and also restricts the number of pooling layers in order to avoid too much upsampling and thus reduces spatial context. SegNet overcomes these problems by learning to map encoder outputs to image pixel labels. We test the performance of SegNet on outdoor RGB scenes from CamVid, KITTI and indoor scenes from the NYU dataset. Our results show that SegNet achieves state-of-the-art performance even without use of additional cues such as depth, video frames or post-processing with CRF models.
  </span>
-<hr>
 
 
 ### 2014 
