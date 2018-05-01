@@ -27,9 +27,8 @@ permalink: /publications/
 <br>
 <img align="left" src="/images/pubs/HPMI2017.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">**Abstract**: Robotic surgery has become a powerful tool for performing minimally invasive procedures, providing advantages in dexterity, precision, and 3D vision, over traditional surgery. One popular robotic system is the da Vinci surgical platform, which allows preoperative information to be incorporated into live procedures using Augmented Reality (AR). Scene depth estimation is a prerequisite for AR, as accurate registration requires 3D correspondences between preoperative and intraoperative organ models. In the past decade, there has been much progress on depth estimation for surgical scenes, such as using monocular or binocular laparoscopes. More recently, advances in deep learning have enabled depth estimation via Convolutional Neural Networks (CNNs), but training requires a large image dataset with ground truth depths. Inspired by, we propose a deep learning framework for surgical scene depth estimation using self-supervision for scalable data acquisition. Our framework consists of an autoencoder for depth prediction, and a differentiable spatial transformer for training the autoencoder on stereo image pairs without ground truth depths. Validation was conducted on stereo videos collected in robotic partial nephrectomy.
  </span>
- <hr>
-
 <hr>
+
 **SemanticFusion: Dense 3D semantic mapping with convolutional neural networks** _John McCormac, Ankur Handa, Andrew Davison, Stefan Leutenegger_, **ICRA 2017**
 
 <br>
