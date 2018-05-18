@@ -108,7 +108,7 @@ permalink: /publications/
 
 
 <br>
-<img align="center" src="/images/pubs/IPMI2014.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**Robust real-time visual odometry for stereo endoscopy using dense quadrifocal tracking** _Ping-Lin Chang, Ankur Handa, Andrew Davison, Daniel Stoyanov_, **IPCAI 2014**
+<img align="left" src="/images/pubs/IPMI2014.png" width="40%"> <span style="line-height: 0.5; font-size: 0.6em;">**Robust real-time visual odometry for stereo endoscopy using dense quadrifocal tracking** _Ping-Lin Chang, Ankur Handa, Andrew Davison, Daniel Stoyanov_, **IPCAI 2014**
 <br>
 <br>
 <br>
