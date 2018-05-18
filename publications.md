@@ -57,6 +57,10 @@ permalink: /publications/
 <img align="left" src="/images/pubs/ICRA2017.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**SemanticFusion: Dense 3D semantic mapping with convolutional neural networks** _John McCormac, Ankur Handa, Andrew Davison, Stefan Leutenegger_, **ICRA 2017**
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 <hr>
 
 ### 2016 
