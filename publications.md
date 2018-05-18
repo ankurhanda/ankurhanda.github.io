@@ -28,20 +28,12 @@ permalink: /publications/
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
 <hr>
 
 
 
 <br>
 <img align="left" src="/images/pubs/HPMI2017.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**Self-Supervised Siamese Learning on Stereo Image Pairs for Depth Estimation in Robotic Surgery.** _Menglong Ye, Ed Johns, Ankur Handa, Lin Zhang, Philip Pratt, Guang-Zhong Yang_, **HSMR 2017**
-<br>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
