@@ -77,6 +77,8 @@ permalink: /publications/
 <img align="left" src="/images/pubs/ICLR2016.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**Spatio-temporal video autoencoder with differentiable memory.** _Viorica Pătrăucean, Ankur Handa, Roberto Cipolla_, **ICLRWorkshop 2016**
 <br>
 <br>
+<br>
+<br>
 
 <hr>
 **Understanding real world indoor scenes with synthetic data.** _Ankur Handa, Viorica Pătrăucean, Vijay Badrinarayanan, Simon Stent, Roberto Cipolla_, **CVPR 2016**
