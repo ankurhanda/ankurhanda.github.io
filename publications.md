@@ -22,6 +22,9 @@ permalink: /publications/
  <span style="line-height: 5pt; font-size: 0.6em;">**SceneNet RGB-D: Can 5M Synthetic Images Beat Generic ImageNet Pre-training on Indoor Segmentation?** _John McCormac, Ankur Handa, Stefan Leutenegger, Andrew Davison_, **ICCV 2017**
 <br>
 <br>
+<br>
+<br>
+<br>
 <hr>
 
 
