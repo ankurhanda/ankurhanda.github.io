@@ -65,16 +65,18 @@ permalink: /publications/
 <hr>
 
 <br>
-<img align="left" src="/images/pubs/so3_exp.png" width="50%"> <span style="line-height: 0.5; font-size: 0.8em;">**gvnn: Neural network library for geometric computer vision.** _Ankur Handa, Michael Bloesch, Viorica Pătrăucean, Simon Stent, John McCormac, Andrew Davison_, **ECCVWorkshop 2016**
+<img align="left" src="/images/pubs/so3_exp.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**gvnn: Neural network library for geometric computer vision.** _Ankur Handa, Michael Bloesch, Viorica Pătrăucean, Simon Stent, John McCormac, Andrew Davison_, **ECCVWorkshop 2016**
 <br>
 <br>
 <br>
 <hr>
 
-**Spatio-temporal video autoencoder with differentiable memory.** _Viorica Pătrăucean, Ankur Handa, Roberto Cipolla_, **ICLRWorkshop 2016**
+
 
 <br>
-<img align="left" src="/images/pubs/ICLR2016.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">
+<img align="left" src="/images/pubs/ICLR2016.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**Spatio-temporal video autoencoder with differentiable memory.** _Viorica Pătrăucean, Ankur Handa, Roberto Cipolla_, **ICLRWorkshop 2016**
+<br>
+<br>
 
 <hr>
 **Understanding real world indoor scenes with synthetic data.** _Ankur Handa, Viorica Pătrăucean, Vijay Badrinarayanan, Simon Stent, Roberto Cipolla_, **CVPR 2016**
