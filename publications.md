@@ -5,6 +5,8 @@ permalink: /publications/
 ---
 
 ### 2018
+
+
 <hr>
 **Domain Randomization and Generative Models for Robotic Grasping** _Josh Tobin, Lukas Biewald, Rocky Duan, Marcin Andrychowicz, Ankur Handa, Vikash Kumar, Bob McGrew, Alex Ray, Jonas Schneider, Peter Welinder, Wojciech Zaremba, Pieter Abbeel_ **arXiv 2018**
 
@@ -15,23 +17,28 @@ permalink: /publications/
 
 ### 2017
 
-**SceneNet RGB-D: Can 5M Synthetic Images Beat Generic ImageNet Pre-training on Indoor Segmentation?** _John McCormac, Ankur Handa, Stefan Leutenegger, Andrew Davison_, **ICCV 2017**
 <br>
-<img align="middle" src="/images/pubs/SceneNetRGBD_ICCV17.png" width="65%"> <br> <br>
- <span style="line-height: 5pt; font-size: 0.8em;">
+<img align="left" src="/images/pubs/SceneNetRGBD_ICCV17.png" width="40%"> 
+ <span style="line-height: 5pt; font-size: 0.6em;">**SceneNet RGB-D: Can 5M Synthetic Images Beat Generic ImageNet Pre-training on Indoor Segmentation?** _John McCormac, Ankur Handa, Stefan Leutenegger, Andrew Davison_, **ICCV 2017**
+<br>
+<br>
 <hr>
 
-**Self-Supervised Siamese Learning on Stereo Image Pairs for Depth Estimation in Robotic Surgery.** _Menglong Ye, Ed Johns, Ankur Handa, Lin Zhang, Philip Pratt, Guang-Zhong Yang_, **HSMR 2017**
+
 
 <br>
-<img align="left" src="/images/pubs/HPMI2017.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">
+<img align="left" src="/images/pubs/HPMI2017.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**Self-Supervised Siamese Learning on Stereo Image Pairs for Depth Estimation in Robotic Surgery.** _Menglong Ye, Ed Johns, Ankur Handa, Lin Zhang, Philip Pratt, Guang-Zhong Yang_, **HSMR 2017**
+<br>
+<br>
 <hr>
 
-**SemanticFusion: Dense 3D semantic mapping with convolutional neural networks** _John McCormac, Ankur Handa, Andrew Davison, Stefan Leutenegger_, **ICRA 2017**
+
 
 <br>
-<img align="left" src="/images/pubs/ICRA2017.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">
- <hr>
+<img align="left" src="/images/pubs/ICRA2017.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**SemanticFusion: Dense 3D semantic mapping with convolutional neural networks** _John McCormac, Ankur Handa, Andrew Davison, Stefan Leutenegger_, **ICRA 2017**
+<br>
+<br>
+<hr>
 
 ### 2016 
 
