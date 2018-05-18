@@ -4,10 +4,6 @@ title: Publications
 permalink: /publications/
 ---
 
-| hello  | This is our paper |
-|--------|-------------------|
-|        |                   |
-
 ### 2018
 <hr>
 **Domain Randomization and Generative Models for Robotic Grasping** _Josh Tobin, Lukas Biewald, Rocky Duan, Marcin Andrychowicz, Ankur Handa, Vikash Kumar, Bob McGrew, Alex Ray, Jonas Schneider, Peter Welinder, Wojciech Zaremba, Pieter Abbeel_ **arXiv 2018**
