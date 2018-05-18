@@ -59,9 +59,13 @@ permalink: /publications/
 
 <hr>
 
-**HDRFusion: HDR SLAM using a low-cost auto-exposure RGB-D sensor.** _Shuda Li, Ankur Handa, Yang Zhang, Andrew Calway,_ **3DV 2016**
+
 <br>
-<img align="left" src="/images/pubs/HDRFusion.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">
+<img align="left" src="/images/pubs/HDRFusion.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**HDRFusion: HDR SLAM using a low-cost auto-exposure RGB-D sensor.** _Shuda Li, Ankur Handa, Yang Zhang, Andrew Calway,_ **3DV 2016**
+<br>
+<br>
+<br>
+<br>
 <hr>
 
 <br>
