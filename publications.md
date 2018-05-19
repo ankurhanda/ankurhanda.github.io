@@ -94,17 +94,10 @@ permalink: /publications/
 <br>
 <br>
 <br>
-<br>
 <hr>
 
 
 ### 2015 
-
-**SceneNet: Understanding Real World Indoor Scenes With Synthetic Data.** _Ankur Handa, Viorica Pătrăucean, Vijay Badrinarayanan, Simon Stent, Roberto Cipolla_, **arXiv, 2015**
-
-
-<hr>
-
 
 <br>
 <img align="left" src="/images/pubs/SegNet2015.png" width="40%"> <span style="line-height: 0.5; font-size: 0.6em;">**SegNet: A deep convolutional encoder-decoder architecture for robust semantic pixel-wise labelling.** _Vijay Badrinarayanan, Ankur Handa, Roberto Cipolla_, **arXiv 2015** 
@@ -129,10 +122,14 @@ permalink: /publications/
 <hr>
 
 
-**Simultaneous Mosaicing and Tracking with an Event Camera.** _Hanme Kim, Ankur Handa, Ryad Benosman, Sio-Hoi Ieng, Andrew Davison_, **BMVC 2014** **(Best Industry Paper Prize)**
+
 
 <br>
-<img align="left" src="/images/pubs/BMVC_2014.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">
+<img align="left" src="/images/pubs/BMVC_2014.png" width="50%"> <span style="line-height: 0.5; font-size: 0.8em;">**Simultaneous Mosaicing and Tracking with an Event Camera.** _Hanme Kim, Ankur Handa, Ryad Benosman, Sio-Hoi Ieng, Andrew Davison_, **BMVC 2014** **(Best Industry Paper Prize)**
+<br>
+<br>
+<br>
+<br>
 <hr>
 
 
