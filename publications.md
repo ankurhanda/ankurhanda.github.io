@@ -87,7 +87,7 @@ permalink: /publications/
 <hr>
 
 <br>
-<img align="left" src="/images/pubs/SceneNet.png" width="50%"> <span style="line-height: 0.5; font-size: 0.6em;">**Understanding real world indoor scenes with synthetic data.** _Ankur Handa, Viorica Pătrăucean, Vijay Badrinarayanan, Simon Stent, Roberto Cipolla_, **CVPR 2016**
+<img align="left" src="/images/pubs/SceneNet.png" width="30%"> <span style="line-height: 0.5; font-size: 0.6em;">**Understanding real world indoor scenes with synthetic data.** _Ankur Handa, Viorica Pătrăucean, Vijay Badrinarayanan, Simon Stent, Roberto Cipolla_, **CVPR 2016**
 <br>
 <br>
 <br>
