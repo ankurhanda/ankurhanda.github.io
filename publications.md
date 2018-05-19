@@ -98,17 +98,20 @@ permalink: /publications/
 
 
 <hr>
-**SegNet: A deep convolutional encoder-decoder architecture for robust semantic pixel-wise labelling.** _Vijay Badrinarayanan, Ankur Handa, Roberto Cipolla_, **arXiv 2015** 
+
 
 <br>
-<img align="left" src="/images/pubs/SegNet2015.png" width="100%"> <span style="line-height: 0.5; font-size: 0.8em;">
+<img align="left" src="/images/pubs/SegNet2015.png" width="40%"> <span style="line-height: 0.5; font-size: 0.6em;">**SegNet: A deep convolutional encoder-decoder architecture for robust semantic pixel-wise labelling.** _Vijay Badrinarayanan, Ankur Handa, Roberto Cipolla_, **arXiv 2015** 
+<br>
+<br>
+<br>
 
 ### 2014 
 <hr>
 
 
 <br>
-<img align="left" src="/images/pubs/IPMI2014.png" width="40%"> <span style="line-height: 0.5; font-size: 0.6em;">**Robust real-time visual odometry for stereo endoscopy using dense quadrifocal tracking** _Ping-Lin Chang, Ankur Handa, Andrew Davison, Daniel Stoyanov_, **IPCAI 2014**
+<img align="left" src="/images/pubs/IPMI2014.png" width="30%"> <span style="line-height: 0.5; font-size: 0.6em;">**Robust real-time visual odometry for stereo endoscopy using dense quadrifocal tracking** _Ping-Lin Chang, Ankur Handa, Andrew Davison, Daniel Stoyanov_, **IPCAI 2014**
 <br>
 <br>
 <br>
