@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-Researcher in Machine Learning
+Researcher in Machine Learning. Previously, I was a Research Scientist at OpenAI.
 
 ### More Information
 
