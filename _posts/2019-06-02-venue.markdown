@@ -2,7 +2,7 @@
 layout: post
 title:  "Venue Analytics: A Simple Alternative to Citation-Based Metrics"
 date:   2019-06-04 22:21:59 +00:00
-image: ../images/jcdl2019.png
+image: /images/jcdl2019.png
 categories: research
 author: "Leo Keselman"
 authors: "<strong>Leonid Keselman</strong>"
