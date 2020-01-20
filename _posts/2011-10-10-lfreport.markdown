@@ -1,0 +1,13 @@
+---
+layout: post
+title:  "Applications of Legendre-Fenchel transformation to computer vision problems"
+date:   2011-10-10 22:23:59 +00:00
+image: /images/lfreport.png
+categories: research
+author: "Ankur Handa"
+authors: "<strong>Ankur Handa</strong>, Richard A. Newcombe, Adrien Angeli and Andrew J. Davison"
+venue: "Departmental Technical Report"
+arxiv: https://www.doc.ic.ac.uk/~ahanda/VaFRIC/eccv2012.pdf
+---
+
+This report presents a tutorial like walk through of the famous Pock and Chambolle primal-dual algorithm and provides a background on the fundametal legendre-fenchel transform that is a building block of the algorithm. 
