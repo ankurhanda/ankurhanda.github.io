@@ -7,7 +7,7 @@ categories: research
 author: "Ankur Handa"
 authors: "<strong>Ankur Handa</strong>, Richard A. Newcombe, Adrien Angeli and Andrew J. Davison"
 venue: "Departmental Technical Report"
-arxiv: https://www.doc.ic.ac.uk/~ahanda/VaFRIC/eccv2012.pdf
+arxiv: https://www.doc.ic.ac.uk/~ahanda/lfreport.pdf
 ---
 
 This report presents a tutorial like walk through of the famous Pock and Chambolle primal-dual algorithm and provides a background on the fundametal legendre-fenchel transform that is a building block of the algorithm. 
