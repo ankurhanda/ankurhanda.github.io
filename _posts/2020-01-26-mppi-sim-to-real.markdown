@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Model-based Generalization under Parameter Uncertainty using Path Integral Control"
-date:   2020-01-26 22:22:59 +00:00
+date:   2020-01-26 10:22:59 +00:00
 image: /images/mppi_sim2real.png
 categories: research
 author: "Ankur Handa"
