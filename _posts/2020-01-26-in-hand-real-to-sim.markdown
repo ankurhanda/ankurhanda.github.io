@@ -5,7 +5,7 @@ date:   2020-01-26 10:21:59 +00:00
 image: /images/jacky_real2sim.png
 categories: research
 author: "Ankur Handa"
-authors: "Jacky Liang, <strong>Ankur Handa</strong>, Karl Van Wyk, Viktor Makoviychuk, Oliver Kroemer, Dieter Fox (Equal Contribution)"
+authors: "Jacky Liang, <strong>Ankur Handa</strong>, Karl Van Wyk, Viktor Makoviychuk, Oliver Kroemer, Dieter Fox"
 venue: "International Conference on Robotics and Automation (ICRA)"
 arxiv: #
 ---
