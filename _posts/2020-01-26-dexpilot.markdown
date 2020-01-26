@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "DexPilot: Vision Based Teleoperation of Dexterous Robotic Hand-Arm System"
-date:   2020-01-26 10:21:59 +00:00
+date:   2020-01-26 11:21:59 +00:00
 image: /images/dexpilot.png
 categories: research
 author: "Ankur Handa"
