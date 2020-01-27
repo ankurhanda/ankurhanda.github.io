@@ -10,5 +10,4 @@ venue: "Conference on Robot Learning (CoRL)"
 arxiv: https://arxiv.org/abs/1810.05762
 ---
 In this work, we propose using GPU-accelerated RL simulations as an alternative to CPU ones. Using NVIDIA Flex, a GPU-based physics engine, we show promising speed-ups of learning various continuous-control, locomotion tasks. With one GPU and CPU core, we are able to train the Humanoid running task with PPO in less than 20 minutes, using 10-1000x fewer CPU cores than previous works.
-
 <p><font color="red">Spotlight</font></p> 
