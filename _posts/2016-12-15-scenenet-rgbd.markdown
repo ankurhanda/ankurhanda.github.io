@@ -9,4 +9,4 @@ authors: "John McCormac, <strong>Ankur Handa</strong>, Stefan Leutenegger, Andre
 venue: "arxiv"
 arxiv: https://arxiv.org/abs/1612.05079
 ---
-An entirely vision based teleoperation for robotic hand-arm system to collect data for imitation learning. The system works without any markers or gloves on the hand.
+We introduce SceneNet RGB-D, expanding the previous work of SceneNet to enable large scale photorealistic rendering of indoor scene trajectories. It provides pixel-perfect ground truth for scene understanding problems such as semantic segmentation, instance segmentation, and object detection, and also for geometric computer vision problems such as optical flow, depth estimation, camera pose estimation, and 3D reconstruction. Random sampling permits virtually unlimited scene configurations, and here we provide a set of 5M rendered RGB-D images from over 15K trajectories in synthetic layouts with random but physically simulated object poses. 
