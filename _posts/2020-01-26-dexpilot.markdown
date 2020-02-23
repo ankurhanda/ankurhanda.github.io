@@ -9,5 +9,5 @@ authors: "<strong>Ankur Handa*</strong>, Karl Van Wyk<strong>*</strong>, Wei Yan
 venue: "International Conference on Robotics and Automation (ICRA)"
 arxiv: https://arxiv.org/abs/1910.03135
 ---
-An entirely vision based teleoperation for robotic hand-arm system to collect data for imitation learning. The system works without any markers or gloves on the hand. [ICRA reviews](/_posts/reviews_dexpilot.txt)<br><br>
+An entirely vision based teleoperation for robotic hand-arm system to collect data for imitation learning. The system works without any markers or gloves on the hand. [ICRA reviews](/reviews/reviews_dexpilot.txt)<br><br>
 <a href="https://www.businessinsider.com/an-inside-look-at-nvidias-next-generation-robotics-lab-2020-2/">Business Insider</a>
