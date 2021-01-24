@@ -2,7 +2,7 @@
 layout: post
 title:  "A User's Guide to Calibrating Robotics Simulators"
 date:   2020-10-26 10:22:59 +00:00
-image: /images/mppi_sim2real.png
+image: /images/sim-calib.png
 categories: research
 author: "Ankur Handa"
 authors: "Bhairav Mehta, <strong>Ankur Handa</strong>, Dieter Fox, Fabio Ramos"
