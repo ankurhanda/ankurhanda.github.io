@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ankur Handa</title>
+    <!-- Importing specific fonts from Google Fonts as used on darioamodei.com -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&display=swap" rel="stylesheet">
     <style>
         /* Theme Variables */
         :root {
@@ -16,10 +18,10 @@
             --border-color: #e0ddd0;
             --award-color: #8b0000;
             
-            /* FONT STACKS */
-            --body-font: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
-            --header-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            --base-font-size: 17px;
+            /* EXACT FONT STACKS */
+            --body-font: 'Newsreader', "Times New Roman", Times, serif;
+            --header-font: 'Inter', "Helvetica Neue", Helvetica, Arial, sans-serif;
+            --base-font-size: 19px; /* Newsreader feels slightly smaller, so we bump it up */
         }
 
         body.dark-mode {
@@ -42,13 +44,14 @@
         body {
             font-family: var(--body-font);
             font-size: var(--base-font-size);
-            line-height: 1.55;
+            line-height: 1.5;
             color: var(--text-color);
             background-color: var(--bg-color);
             transition: background-color 0.3s ease, color 0.3s ease;
             display: flex;
             justify-content: center;
             min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
         }
 
         .container {
@@ -71,16 +74,20 @@
 
         .sidebar h2 {
             font-family: var(--header-font);
-            font-size: 19px;
+            font-size: 15px;
             margin-bottom: 24px;
             font-weight: 700;
-            letter-spacing: -0.01em;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            opacity: 0.8;
         }
 
         .sidebar-list {
             list-style: none;
             font-size: 15px;
             color: var(--meta-color);
+            font-family: var(--header-font);
+            font-weight: 500;
         }
 
         .sidebar-list li {
@@ -102,14 +109,15 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 35px;
+            margin-bottom: 60px;
         }
 
-        h1 {
-            font-family: var(--header-font);
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.03em;
+        /* Name Heading - Dario uses a serif for the main title */
+        h1.site-title {
+            font-family: var(--body-font);
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
             cursor: pointer;
         }
 
@@ -142,28 +150,29 @@
         }
 
         p { 
-            margin-bottom: 20px; 
+            margin-bottom: 24px; 
             text-align: justify;
         }
         
-        h2 {
+        /* Section Headers - UI style */
+        h2.section-header {
             font-family: var(--header-font);
-            font-size: 18px;
-            font-weight: 700;
+            font-size: 16px;
+            font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 35px;
-            margin-bottom: 12px;
+            letter-spacing: 0.06em;
+            margin-top: 50px;
+            margin-bottom: 20px;
         }
 
         ul:not(.sidebar-list) {
             list-style: none;
             padding: 0;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         ul:not(.sidebar-list) li {
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             position: relative;
             padding-left: 30px;
         }
@@ -171,34 +180,36 @@
         .li-number {
             position: absolute;
             left: 0;
-            font-size: 13px;
+            font-size: 14px;
             color: var(--meta-color);
             font-family: var(--header-font);
-            opacity: 0.7;
+            font-weight: 600;
+            opacity: 0.6;
         }
 
         .paper-title {
-            font-weight: bold;
+            font-weight: 700;
             display: inline;
             text-decoration: underline;
             text-underline-offset: 3px;
+            font-size: 1.05em;
         }
 
         .paper-meta {
             display: block;
-            font-size: 14px;
+            font-size: 16px;
             color: var(--meta-color);
-            margin-top: 2px;
+            margin-top: 4px;
             font-style: italic;
         }
 
         .award-note {
-            font-weight: bold;
+            font-weight: 700;
             color: var(--award-color);
             font-family: var(--header-font);
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
         }
 
         a {
@@ -213,51 +224,60 @@
         .essay-view { display: none; }
 
         .essay-header h1 {
-            font-size: 34px;
-            line-height: 1.1;
-            margin-bottom: 12px;
-            letter-spacing: -0.03em;
-            font-family: var(--header-font);
-            font-weight: 800;
+            font-size: 56px; /* Very large bold serif heading as per image_bb961a.png */
+            line-height: 1.05;
+            margin-bottom: 20px;
+            letter-spacing: -0.04em;
+            font-family: var(--body-font);
+            font-weight: 700;
         }
 
         .essay-meta {
             font-family: var(--header-font);
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             color: var(--meta-color);
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            margin-bottom: 30px;
+            letter-spacing: 0.02em;
         }
 
         .essay-card {
             background-color: var(--card-bg);
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
             border: 1px solid var(--border-color);
+        }
+
+        .essay-card h2 {
+            font-family: var(--header-font);
+            font-size: 16px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 20px;
         }
 
         .back-link {
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 30px;
             font-family: var(--header-font);
-            font-size: 12px;
-            font-weight: 600;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.08em;
             text-decoration: none;
             color: var(--meta-color);
             cursor: pointer;
         }
 
         .attribution {
-            margin-top: 60px;
-            font-size: 12px;
+            margin-top: 80px;
+            font-size: 13px;
             color: var(--meta-color);
             font-family: var(--header-font);
-            opacity: 0.8;
+            opacity: 0.7;
+            font-weight: 500;
         }
 
         @media (max-width: 850px) {
@@ -281,7 +301,7 @@
         <div class="content-wrapper">
             <section id="home-view">
                 <header>
-                    <h1 onclick="showHome()">Ankur Handa</h1>
+                    <h1 class="site-title" onclick="showHome()">Ankur Handa</h1>
                     <div class="toggle-container" onclick="toggleTheme()" aria-label="Toggle dark mode">
                         <div class="toggle-knob"></div>
                     </div>
@@ -292,14 +312,14 @@
                         I am currently a Principal Research Scientist at <strong>NVIDIA Robotics</strong> and co-lead the Dexterity robotics research team. Prior to that, I was a Research Scientist at <strong>OpenAI</strong> and before that I obtained my PhD from Imperial College London. 
                     </p>
 
-                    <h2 id="bio">Bio</h2>
+                    <h2 class="section-header" id="bio">Bio</h2>
                     <p>
                         I began my career in hardware and robotics, completed a PhD in computer vision, and then returned to robotics with a stronger foundation in machine learning and vision techniques. My work now heavily relies on simulation and after exploring the role that rendering engines can play in generating data for understanding and building SLAM systems, I have been combining physics simulation with rendering to develop robust multi-fingered dexterous manipulation systems. This approach has powered my recent Dex series of work over the past several years.
                     </p>
 
-                    <h2 id="publications">Selected Publications</h2>
+                    <h2 class="section-header" id="publications">Selected Publications</h2>
                     <ul>
-                        <li><span class="li-number">1.</span><div class="paper-title">Isaac Lab: A GPU-accelerated simulation framework for multi-modal robot learning</div><span class="paper-meta">arXiv preprint arXiv:2511.04831 (2025)</span></li>
+                        <li><span class="li-number">1.</span><div class="paper-title" onclick="showEssay('Isaac Lab', 'arXiv 2025', 'Mittal et al.')" style="cursor: pointer;">Isaac Lab: A GPU-accelerated simulation framework for multi-modal robot learning</div><span class="paper-meta">arXiv preprint arXiv:2511.04831 (2025)</span></li>
                         <li><span class="li-number">2.</span><div class="paper-title">End-to-End RL Improves Dexterous Grasping Policies</div><span class="paper-meta">arXiv preprint arXiv:2509.16434 (2025)</span></li>
                         <li><span class="li-number">3.</span><div class="paper-title">CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models</div><span class="paper-meta">CVPR 2025</span></li>
                         <li><span class="li-number">4.</span><div class="paper-title">DextrAH-RGB: Visuomotor Policies to Grasp Anything with Dexterous Hands</div><span class="paper-meta">CoRR abs/2412.01791 (2024/25)</span></li>
@@ -322,10 +342,10 @@
                         <li><span class="li-number">21.</span><div class="paper-title">Scalable Active Matching</div><span class="paper-meta">CVPR 2010</span></li>
                     </ul>
 
-                    <h2>Links</h2>
-                    <ul>
-                        <li><a href="https://github.com/ankurhanda" target="_blank">GitHub</a></li>
-                        <li><a href="https://scholar.google.com/citations?user=R74Kbe4AAAAJ" target="_blank">Google Scholar</a></li>
+                    <h2 class="section-header">Links</h2>
+                    <ul class="sidebar-list" style="padding-left: 0; margin-bottom: 40px;">
+                        <li style="margin-bottom: 10px; padding-left: 0;"><a href="https://github.com/ankurhanda" target="_blank">GitHub</a></li>
+                        <li style="margin-bottom: 10px; padding-left: 0;"><a href="https://scholar.google.com/citations?user=R74Kbe4AAAAJ" target="_blank">Google Scholar</a></li>
                     </ul>
 
                     <footer class="attribution">
@@ -334,7 +354,7 @@
                 </main>
             </section>
 
-            <!-- Project View (Hidden by showHome) -->
+            <!-- Project View -->
             <section id="essay-view" class="essay-view">
                 <a class="back-link" onclick="showHome()">← Back to profile</a>
                 
@@ -363,6 +383,18 @@
             const body = document.body;
             body.classList.toggle('dark-mode');
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        function showEssay(title, date, author) {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('essay-view').style.display = 'block';
+            
+            document.getElementById('essay-title').innerText = title;
+            document.getElementById('essay-date').innerText = date;
+            document.getElementById('essay-author').innerText = author;
+            
+            window.scrollTo(0, 0);
         }
 
         function showHome() {
