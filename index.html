@@ -250,6 +250,14 @@
             cursor: pointer;
         }
 
+        .attribution {
+            margin-top: 60px;
+            font-size: 12px;
+            color: var(--meta-color);
+            font-family: var(--header-font);
+            opacity: 0.8;
+        }
+
         @media (max-width: 850px) {
             .container { flex-direction: column; padding: 30px 20px; }
             .sidebar { width: 100%; position: static; margin-bottom: 30px; padding: 0; border-bottom: 1px solid var(--border-color); }
@@ -284,7 +292,7 @@
 
                     <h2 id="bio">Bio</h2>
                     <p>
-			I began my career in hardware and robotics, completed a PhD in computer vision, and then returned to robotics with a stronger foundation in machine learning and vision techniques. My work now heavily relies on simulation and after exploring the role that rendering engines can play in generating data for understanding and building SLAM systems, I have been combining physics simulation with rendering to develop robust multi-fingered dexterous manipulation systems. This approach has powered my recent Dex series of work over the past several years.
+                        I began my career in hardware and robotics, completed a PhD in computer vision, and then returned to robotics with a stronger foundation in machine learning and vision techniques. My work now heavily relies on simulation and after exploring the role that rendering engines can play in generating data for understanding and building SLAM systems, I have been combining physics simulation with rendering to develop robust multi-fingered dexterous manipulation systems. This approach has powered my recent Dex series of work over the past several years.
                     </p>
 
                     <h2 id="publications">Selected Publications</h2>
@@ -317,29 +325,11 @@
                         <li><a href="https://github.com/ankurhanda" target="_blank">GitHub</a></li>
                         <li><a href="https://scholar.google.com/citations?user=R74Kbe4AAAAJ" target="_blank">Google Scholar</a></li>
                     </ul>
+
+                    <footer class="attribution">
+                        This website template is from <a href="https://www.darioamodei.com/" target="_blank">https://www.darioamodei.com/</a>
+                    </footer>
                 </main>
-            </section>
-
-            <!-- Project View -->
-            <section id="essay-view" class="essay-view">
-                <a class="back-link" onclick="showHome()">← Back to profile</a>
-                
-                <div class="essay-header">
-                    <h1 id="essay-title">Research Project</h1>
-                    <div class="essay-meta">
-                        <span id="essay-date">Conference</span> • <span id="essay-author">Ankur Handa</span>
-                    </div>
-                </div>
-
-                <div class="essay-card">
-                    <h2>Project Abstract</h2>
-                    <p id="essay-placeholder">
-                        This work addresses fundamental challenges in robotic perception and control. By leveraging high-fidelity simulations and modern machine learning techniques, we aim to bridge the gap between virtual environments and real-world deployment.
-                    </p>
-                    <p>
-                        Detailed contributions include novel architectures for scene understanding, robust optimization frameworks, and efficient data collection pipelines for imitation and reinforcement learning.
-                    </p>
-                </div>
             </section>
         </div>
     </div>
