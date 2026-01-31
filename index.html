@@ -21,7 +21,7 @@
             /* EXACT FONT STACKS */
             --body-font: 'Newsreader', "Times New Roman", Times, serif;
             --header-font: 'Inter', "Helvetica Neue", Helvetica, Arial, sans-serif;
-            --base-font-size: 19px; /* Newsreader feels slightly smaller, so we bump it up */
+            --base-font-size: 19px;
         }
 
         body.dark-mode {
@@ -76,9 +76,8 @@
             font-family: var(--header-font);
             font-size: 15px;
             margin-bottom: 24px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
             opacity: 0.8;
         }
 
@@ -112,7 +111,6 @@
             margin-bottom: 60px;
         }
 
-        /* Name Heading - Dario uses a serif for the main title */
         h1.site-title {
             font-family: var(--body-font);
             font-size: 32px;
@@ -154,13 +152,12 @@
             text-align: justify;
         }
         
-        /* Section Headers - UI style */
+        /* Section Headers - Increased font size for Bio and Selected Publications only */
         h2.section-header {
             font-family: var(--header-font);
-            font-size: 16px;
-            font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
             margin-top: 50px;
             margin-bottom: 20px;
         }
@@ -175,7 +172,7 @@
             margin-bottom: 22px;
             position: relative;
             padding-left: 30px;
-            font-size: 17px; /* Reduced font size for publications specifically */
+            font-size: 17px; 
         }
 
         .li-number {
@@ -221,11 +218,10 @@
 
         a:hover { color: var(--hover-color); }
 
-        /* Essay/Project View */
         .essay-view { display: none; }
 
         .essay-header h1 {
-            font-size: 56px; /* Very large bold serif heading as per image_bb961a.png */
+            font-size: 56px; 
             line-height: 1.05;
             margin-bottom: 20px;
             letter-spacing: -0.04em;
@@ -254,8 +250,6 @@
             font-family: var(--header-font);
             font-size: 16px;
             font-weight: 800;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
             margin-bottom: 20px;
         }
 
@@ -345,8 +339,8 @@
 
                     <h2 class="section-header">Links</h2>
                     <ul class="sidebar-list" style="padding-left: 0; margin-bottom: 40px;">
-                        <li style="margin-bottom: 10px; padding-left: 0;"><a href="https://github.com/ankurhanda" target="_blank" style="text-decoration: underline; text-underline-offset: 3px;">GitHub</a></li>
-                        <li style="margin-bottom: 10px; padding-left: 0;"><a href="https://scholar.google.com/citations?user=sCTJI-0AAAAJ&hl=en" target="_blank" style="text-decoration: underline; text-underline-offset: 3px;">Google Scholar</a></li>
+                        <li style="margin-bottom: 10px; padding-left: 0;"><a href="https://github.com/ankurhanda" target="_blank">GitHub</a></li>
+                        <li style="margin-bottom: 10px; padding-left: 0;"><a href="https://scholar.google.com/citations?user=sCTJI-0AAAAJ&hl=en" target="_blank">Google Scholar</a></li>
                     </ul>
 
                     <footer class="attribution">
@@ -358,7 +352,6 @@
             <!-- Project View -->
             <section id="essay-view" class="essay-view">
                 <a class="back-link" onclick="showHome()">← Back to profile</a>
-                
                 <div class="essay-header">
                     <h1 id="essay-title">Research Project</h1>
                     <div class="essay-meta">
@@ -374,18 +367,6 @@
             const body = document.body;
             body.classList.toggle('dark-mode');
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }
-
-        function showEssay(title, date, author) {
-            document.getElementById('home-view').style.display = 'none';
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('essay-view').style.display = 'block';
-            
-            document.getElementById('essay-title').innerText = title;
-            document.getElementById('essay-date').innerText = date;
-            document.getElementById('essay-author').innerText = author;
-            
-            window.scrollTo(0, 0);
         }
 
         function showHome() {
