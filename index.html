@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ankur Handa</title>
+    <style>
+        /* Theme Variables */
+        :root {
+            --bg-color: #f2efdf; 
+            --text-color: #1a1a1b;
+            --link-color: #1a1a1b;
+            --hover-color: #666;
+            --meta-color: #555;
+            --card-bg: #f9f8f3; 
+            --border-color: #e0ddd0;
+            --award-color: #8b0000;
+            
+            /* FONT STACKS */
+            --body-font: "Charter", "Bitstream Charter", "Sitka Text", Cambria, Georgia, serif;
+            --header-font: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --base-font-size: 17px;
+        }
+
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #e8e8e8;
+            --link-color: #e8e8e8;
+            --hover-color: #aaa;
+            --meta-color: #999;
+            --card-bg: #1e1e1e; 
+            --border-color: #333;
+            --award-color: #ff9d9d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--body-font);
+            font-size: var(--base-font-size);
+            line-height: 1.55;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 960px;
+            padding: 50px 30px;
+            position: relative;
+        }
+
+        /* Sidebar Styling */
+        .sidebar {
+            width: 190px;
+            flex-shrink: 0;
+            padding-right: 30px;
+            position: sticky;
+            top: 50px;
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            font-family: var(--header-font);
+            font-size: 19px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+        }
+
+        .sidebar-list {
+            list-style: none;
+            font-size: 15px;
+            color: var(--meta-color);
+        }
+
+        .sidebar-list li {
+            margin-bottom: 14px;
+        }
+
+        .sidebar-list a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Main Content Styling */
+        .content-wrapper {
+            flex-grow: 1;
+            max-width: 650px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+        }
+
+        h1 {
+            font-family: var(--header-font);
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            cursor: pointer;
+        }
+
+        /* Theme Toggle */
+        .toggle-container {
+            cursor: pointer;
+            width: 40px;
+            height: 20px;
+            background-color: transparent;
+            border: 1.5px solid var(--text-color);
+            border-radius: 10px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 2px;
+        }
+
+        .toggle-knob {
+            width: 12px;
+            height: 12px;
+            background-color: var(--text-color);
+            border-radius: 50%;
+            position: absolute;
+            left: 3px;
+            transition: transform 0.2s ease;
+        }
+
+        body.dark-mode .toggle-knob {
+            transform: translateX(19px);
+        }
+
+        p { margin-bottom: 20px; }
+        
+        h2 {
+            font-family: var(--header-font);
+            font-size: 18px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 35px;
+            margin-bottom: 12px;
+        }
+
+        ul:not(.sidebar-list) {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        ul:not(.sidebar-list) li {
+            margin-bottom: 18px;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .li-number {
+            position: absolute;
+            left: 0;
+            font-size: 13px;
+            color: var(--meta-color);
+            font-family: var(--header-font);
+            opacity: 0.7;
+        }
+
+        .paper-title {
+            font-weight: bold;
+            display: inline;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            cursor: pointer;
+        }
+
+        .paper-meta {
+            display: block;
+            font-size: 14px;
+            color: var(--meta-color);
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        .award-note {
+            font-weight: bold;
+            color: var(--award-color);
+            font-family: var(--header-font);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+        }
+
+        .pub-links {
+            font-size: 13px;
+            font-family: var(--header-font);
+            margin-top: 4px;
+            color: var(--meta-color);
+        }
+
+        .pub-links a {
+            color: var(--meta-color);
+            text-decoration: none;
+            margin-right: 8px;
+        }
+
+        .pub-links a:hover {
+            color: var(--link-color);
+            text-decoration: underline;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+
+        a:hover { color: var(--hover-color); }
+
+        /* Essay/Project View */
+        .essay-view { display: none; }
+
+        .essay-header h1 {
+            font-size: 34px;
+            line-height: 1.1;
+            margin-bottom: 12px;
+            letter-spacing: -0.03em;
+            font-family: var(--header-font);
+            font-weight: 800;
+        }
+
+        .essay-meta {
+            font-family: var(--header-font);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--meta-color);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .essay-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border-color);
+            font-size: 16px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 15px;
+            font-family: var(--header-font);
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            text-decoration: none;
+            color: var(--meta-color);
+        }
+
+        @media (max-width: 850px) {
+            .container { flex-direction: column; padding: 30px 20px; }
+            .sidebar { width: 100%; position: static; margin-bottom: 30px; padding: 0; border-bottom: 1px solid var(--border-color); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <aside class="sidebar" id="sidebar">
+            <h2>Navigation</h2>
+            <ul class="sidebar-list">
+                <li><a href="#" onclick="showHome()">Home</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#highlights">Highlights</a></li>
+            </ul>
+        </aside>
+
+        <div class="content-wrapper">
+            <section id="home-view">
+                <header>
+                    <h1 onclick="showHome()">Ankur Handa</h1>
+                    <div class="toggle-container" onclick="toggleTheme()" aria-label="Toggle dark mode">
+                        <div class="toggle-knob"></div>
+                    </div>
+                </header>
+
+                <main>
+                    <p>
+                        I work at the intersection of perception (computer vision) and control for robotics. My work relies heavily on machine-learning, optimisation and simulations (rendering and physics). 
+                    </p>
+                    <p>
+                        I am currently a Principal Research Scientist at <strong>NVIDIA Robotics</strong>. Prior to that, I was a Research Scientist at <strong>OpenAI</strong> and obtained my PhD from Imperial College London.
+                    </p>
+
+                    <h2 id="highlights">Highlights</h2>
+                    <p>
+                        Some of my interesting works include <a href="https://www.doc.ic.ac.uk/~ahanda/VaFRIC/" target="_blank">VaFRIC</a> and <a href="https://www.doc.ic.ac.uk/~ahanda/ICL-NUIM/" target="_blank">ICL-NUIM</a> where we worked on trying to use computer graphics to benchmark tracking and SLAM systems. This was followed up by <a href="https://robotvault.bitbucket.io/scenenet.html" target="_blank">SceneNet</a> and <a href="https://robotvault.bitbucket.io/scenenet-rgbd.html" target="_blank">SceneNet RGB-D</a> where we used computer graphics to do scene understanding (semantic segmentation) using neural networks. Recently, we looked at using GPU Accelerated Physics with Reinforcement Learning to understand how to close the sim-to-real gap. More recently, the work on <a href="https://dex-pilot.github.io/" target="_blank">DexPilot</a> allows us to do entirely vision based teleoperation to perform many challenging robotics tasks.
+                    </p>
+
+                    <h2 id="publications">Selected Publications</h2>
+                    <ul>
+                        <li><span class="li-number">1.</span><div class="paper-title" onclick="showEssay('Isaac Lab', 'arXiv 2025', 'Mittal et al.')">Isaac lab: A gpu-accelerated simulation framework for multi-modal robot learning</div><span class="paper-meta">arXiv preprint arXiv:2511.04831 (2025)</span></li>
+                        <li><span class="li-number">2.</span><div class="paper-title" onclick="showEssay('End-to-End RL', 'arXiv 2025', 'Singh et al.')">End-to-End RL Improves Dexterous Grasping Policies</div><span class="paper-meta">arXiv preprint arXiv:2509.16434 (2025)</span></li>
+                        <li><span class="li-number">3.</span><div class="paper-title" onclick="showEssay('CoT-VLA', 'CVPR 2025', 'Zhao et al.')">CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models</div><span class="paper-meta">CVPR 2025</span></li>
+                        <li><span class="li-number">4.</span><div class="paper-title" onclick="showEssay('DextrAH-RGB', '2024', 'Singh et al.')">DextrAH-RGB: Visuomotor Policies to Grasp Anything with Dexterous Hands</div><span class="paper-meta">CoRR abs/2412.01791 (2024/25)</span></li>
+                        <li><span class="li-number">5.</span><div class="paper-title" onclick="showEssay('DextrAH-G', 'CoRL 2024', 'Lum et al.')">DextrAH-G: Pixels-to-Action Dexterous Arm-Hand Grasping with Geometric Fabrics</div><span class="paper-meta">CoRL 2024</span></li>
+                        <li><span class="li-number">6.</span><div class="paper-title" onclick="showEssay('DeXtreme', 'ICRA 2023', 'Handa et al.')">DeXtreme: Transfer of Agile In-Hand Manipulation from Simulation to Reality</div><span class="paper-meta">ICRA 2023</span></li>
+                        <li><span class="li-number">7.</span><div class="paper-title" onclick="showEssay('CuRobo', 'ICRA 2023', 'Sundaralingam et al.')">CuRobo: Parallelized Collision-Free Robot Motion Generation</div><span class="paper-meta">ICRA 2023</span></li>
+                        <li><span class="li-number">8.</span><div class="paper-title" onclick="showEssay('DexPBT', 'RSS 2023', 'Petrenko et al.')">DexPBT: Scaling up Dexterous Manipulation for Hand-Arm Systems with Population-Based Training</div><span class="paper-meta">RSS 2023</span></li>
+                        <li><span class="li-number">9.</span><div class="paper-title" onclick="showEssay('Remote TriFinger', 'IROS 2022', 'Allshire et al.')">Transferring Dexterous Manipulation from GPU Simulation to a Remote Real-World TriFinger</div><span class="paper-meta">IROS 2022</span></li>
+                        <li><span class="li-number">10.</span><div class="paper-title" onclick="showEssay('Isaac Gym', 'NeurIPS 2021', 'Makoviychuk et al.')">Isaac Gym: High Performance GPU-Based Physics Simulation</div><span class="paper-meta">NeurIPS 2021</span></li>
+                        <li><span class="li-number">11.</span><div class="paper-title" onclick="showEssay('DexPilot', 'ICRA 2020', 'Handa et al.')">DexPilot: Vision-Based Teleoperation of Dexterous Robotic Hand-Arm System</div><span class="paper-meta">ICRA 2020</span></li>
+                        <li><span class="li-number">12.</span><div class="paper-title" onclick="showEssay('Tactile Force', 'ICRA 2019', 'Sundaralingam et al.')">Robust Learning of Tactile Force Estimation through Robot Interaction</div><span class="paper-meta">ICRA 2019 • <span class="award-note">Best Manipulation Paper Award Finalist</span></span></li>
+                        <li><span class="li-number">13.</span><div class="paper-title" onclick="showEssay('Closing Sim-Real', 'ICRA 2019', 'Chebotar et al.')">Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience</div><span class="paper-meta">ICRA 2019 • <span class="award-note">Best Student Paper Award Finalist</span></span></li>
+                        <li><span class="li-number">14.</span><div class="paper-title" onclick="showEssay('GPU RL Simulation', 'CoRL 2018', 'Handa & Liang et al.')">GPU-Accelerated Robotic Simulation for Distributed Reinforcement Learning</div><span class="paper-meta">CoRL 2018 • <span class="award-note">Spotlight</span></span></li>
+                        <li><span class="li-number">15.</span><div class="paper-title" onclick="showEssay('SceneNet RGB-D Segmentation', 'ICCV 2017', 'McCormac et al.')">SceneNet RGB-D: Can 5M Synthetic Images Beat Generic ImageNet Pre-training on Indoor Segmentation?</div><span class="paper-meta">ICCV 2017</span></li>
+                        <li><span class="li-number">16.</span><div class="paper-title" onclick="showEssay('Real Indoor Scenes', 'CVPR 2016', 'Handa et al.')">Understanding Real World Indoor Scenes With Synthetic Data</div><span class="paper-meta">CVPR 2016</span></li>
+                        <li><span class="li-number">17.</span><div class="paper-title" onclick="showEssay('SceneNet Generator', 'ICRA 2016', 'Handa et al.')">SceneNet: an Annotated Model Generator for Indoor Scene Understanding</div><span class="paper-meta">ICRA 2016</span></li>
+                        <li><span class="li-number">18.</span><div class="paper-title" onclick="showEssay('RGB-D SLAM Benchmark', 'ICRA 2014', 'Handa et al.')">A Benchmark for RGB-D Visual Odometry, 3D Reconstruction and SLAM</div><span class="paper-meta">ICRA 2014</span></li>
+                        <li><span class="li-number">19.</span><div class="paper-title" onclick="showEssay('Mosaicing', 'BMVC 2014', 'Kim et al.')">Simultaneous Mosaicing and Tracking with an Event Camera</div><span class="paper-meta">BMVC 2014 • <span class="award-note">Best Industry Paper Award Winner</span></span></li>
+                        <li><span class="li-number">20.</span><div class="paper-title" onclick="showEssay('Camera Tracking', 'ECCV 2012', 'Handa et al.')">Real-Time Camera Tracking: When is High Frame-Rate Best?</div><span class="paper-meta">ECCV 2012</span></li>
+                        <li><span class="li-number">21.</span><div class="paper-title" onclick="showEssay('Active Matching', 'CVPR 2010', 'Handa et al.')">Scalable Active Matching</div><span class="paper-meta">CVPR 2010</span></li>
+                    </ul>
+
+                    <h2>Links</h2>
+                    <ul>
+                        <li><a href="https://github.com/ankurhanda" target="_blank">GitHub</a></li>
+                        <li><a href="https://scholar.google.com/citations?user=R74Kbe4AAAAJ" target="_blank">Google Scholar</a></li>
+                    </ul>
+                </main>
+            </section>
+
+            <!-- Project View -->
+            <section id="essay-view" class="essay-view">
+                <a href="#" class="back-link" onclick="showHome()">← Back to profile</a>
+                
+                <div class="essay-header">
+                    <h1 id="essay-title">Research Project</h1>
+                    <div class="essay-meta">
+                        <span id="essay-date">Conference</span> • <span id="essay-author">Ankur Handa</span>
+                    </div>
+                </div>
+
+                <div class="essay-card">
+                    <h2>Project Abstract</h2>
+                    <p id="essay-placeholder">
+                        This work addresses fundamental challenges in robotic perception and control. By leveraging high-fidelity simulations and modern machine learning techniques, we aim to bridge the gap between virtual environments and real-world deployment.
+                    </p>
+                    <p>
+                        Detailed contributions include novel architectures for scene understanding, robust optimization frameworks, and efficient data collection pipelines for imitation and reinforcement learning.
+                    </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            const body = document.body;
+            body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        function showEssay(title, date, author) {
+            document.getElementById('home-view').style.display = 'none';
+            document.getElementById('sidebar').style.display = 'none';
+            document.getElementById('essay-view').style.display = 'block';
+            
+            document.getElementById('essay-title').innerText = title;
+            document.getElementById('essay-date').innerText = date;
+            document.getElementById('essay-author').innerText = author;
+            
+            window.scrollTo(0, 0);
+        }
+
+        function showHome() {
+            document.getElementById('home-view').style.display = 'block';
+            document.getElementById('sidebar').style.display = window.innerWidth > 850 ? 'block' : 'none';
+            document.getElementById('essay-view').style.display = 'none';
+            window.scrollTo(0, 0);
+        }
+
+        window.onload = () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                document.body.classList.add('dark-mode');
+            }
+        }
+
+        window.onresize = () => {
+            if (document.getElementById('home-view').style.display !== 'none') {
+                document.getElementById('sidebar').style.display = window.innerWidth > 850 ? 'block' : 'none';
+            }
+        };
+    </script>
+</body>
+</html>
