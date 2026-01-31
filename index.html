@@ -141,7 +141,10 @@
             transform: translateX(19px);
         }
 
-        p { margin-bottom: 20px; }
+        p { 
+            margin-bottom: 20px; 
+            text-align: justify;
+        }
         
         h2 {
             font-family: var(--header-font);
@@ -323,13 +326,35 @@
                     <h2>Links</h2>
                     <ul>
                         <li><a href="https://github.com/ankurhanda" target="_blank">GitHub</a></li>
-                        <li><a href="https://scholar.google.com/citations?user=sCTJI-0AAAAJ&hl=en" target="_blank">Google Scholar</a></li>
+                        <li><a href="https://scholar.google.com/citations?user=R74Kbe4AAAAJ" target="_blank">Google Scholar</a></li>
                     </ul>
 
                     <footer class="attribution">
                         This website template is from <a href="https://www.darioamodei.com/" target="_blank">https://www.darioamodei.com/</a>
                     </footer>
                 </main>
+            </section>
+
+            <!-- Project View (Hidden by showHome) -->
+            <section id="essay-view" class="essay-view">
+                <a class="back-link" onclick="showHome()">← Back to profile</a>
+                
+                <div class="essay-header">
+                    <h1 id="essay-title">Research Project</h1>
+                    <div class="essay-meta">
+                        <span id="essay-date">Conference</span> • <span id="essay-author">Ankur Handa</span>
+                    </div>
+                </div>
+
+                <div class="essay-card">
+                    <h2>Project Abstract</h2>
+                    <p id="essay-placeholder">
+                        This work addresses fundamental challenges in robotic perception and control. By leveraging high-fidelity simulations and modern machine learning techniques, we aim to bridge the gap between virtual environments and real-world deployment.
+                    </p>
+                    <p>
+                        Detailed contributions include novel architectures for scene understanding, robust optimization frameworks, and efficient data collection pipelines for imitation and reinforcement learning.
+                    </p>
+                </div>
             </section>
         </div>
     </div>
