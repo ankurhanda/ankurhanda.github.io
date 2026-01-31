@@ -179,7 +179,6 @@
             display: inline;
             text-decoration: underline;
             text-underline-offset: 3px;
-            cursor: pointer;
         }
 
         .paper-meta {
@@ -197,24 +196,6 @@
             font-size: 13px;
             text-transform: uppercase;
             letter-spacing: 0.02em;
-        }
-
-        .pub-links {
-            font-size: 13px;
-            font-family: var(--header-font);
-            margin-top: 4px;
-            color: var(--meta-color);
-        }
-
-        .pub-links a {
-            color: var(--meta-color);
-            text-decoration: none;
-            margin-right: 8px;
-        }
-
-        .pub-links a:hover {
-            color: var(--link-color);
-            text-decoration: underline;
         }
 
         a {
@@ -266,6 +247,7 @@
             letter-spacing: 0.1em;
             text-decoration: none;
             color: var(--meta-color);
+            cursor: pointer;
         }
 
         @media (max-width: 850px) {
@@ -305,32 +287,32 @@
 
                     <h2 id="highlights">Highlights</h2>
                     <p>
-		    My work heavily relies on simulation and I started my career looking at the role rendering engines can play to generate data to understand and build SLAM systems. Since then I have been combining physics simulations with rendering to build robust multi-fingered dexterous manipulation systems and it has powered my recent dex series of work over the past several years.
+                        My work heavily relies on simulation and I started my career looking at the role rendering engines can play to generate data to understand and build SLAM systems. Since then I have been combining physics simulations with rendering to build robust multi-fingered dexterous manipulation systems and it has powered my recent dex series of work over the past several years.
                     </p>
 
                     <h2 id="publications">Selected Publications</h2>
                     <ul>
-                        <li><span class="li-number">1.</span><div class="paper-title" onclick="showEssay('Isaac Lab', 'arXiv 2025', 'Mittal et al.')">Isaac lab: A gpu-accelerated simulation framework for multi-modal robot learning</div><span class="paper-meta">arXiv preprint arXiv:2511.04831 (2025)</span></li>
-                        <li><span class="li-number">2.</span><div class="paper-title" onclick="showEssay('End-to-End RL', 'arXiv 2025', 'Singh et al.')">End-to-End RL Improves Dexterous Grasping Policies</div><span class="paper-meta">arXiv preprint arXiv:2509.16434 (2025)</span></li>
-                        <li><span class="li-number">3.</span><div class="paper-title" onclick="showEssay('CoT-VLA', 'CVPR 2025', 'Zhao et al.')">CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models</div><span class="paper-meta">CVPR 2025</span></li>
-                        <li><span class="li-number">4.</span><div class="paper-title" onclick="showEssay('DextrAH-RGB', '2024', 'Singh et al.')">DextrAH-RGB: Visuomotor Policies to Grasp Anything with Dexterous Hands</div><span class="paper-meta">CoRR abs/2412.01791 (2024/25)</span></li>
-                        <li><span class="li-number">5.</span><div class="paper-title" onclick="showEssay('DextrAH-G', 'CoRL 2024', 'Lum et al.')">DextrAH-G: Pixels-to-Action Dexterous Arm-Hand Grasping with Geometric Fabrics</div><span class="paper-meta">CoRL 2024</span></li>
-                        <li><span class="li-number">6.</span><div class="paper-title" onclick="showEssay('DeXtreme', 'ICRA 2023', 'Handa et al.')">DeXtreme: Transfer of Agile In-Hand Manipulation from Simulation to Reality</div><span class="paper-meta">ICRA 2023</span></li>
-                        <li><span class="li-number">7.</span><div class="paper-title" onclick="showEssay('CuRobo', 'ICRA 2023', 'Sundaralingam et al.')">CuRobo: Parallelized Collision-Free Robot Motion Generation</div><span class="paper-meta">ICRA 2023</span></li>
-                        <li><span class="li-number">8.</span><div class="paper-title" onclick="showEssay('DexPBT', 'RSS 2023', 'Petrenko et al.')">DexPBT: Scaling up Dexterous Manipulation for Hand-Arm Systems with Population-Based Training</div><span class="paper-meta">RSS 2023</span></li>
-                        <li><span class="li-number">9.</span><div class="paper-title" onclick="showEssay('Remote TriFinger', 'IROS 2022', 'Allshire et al.')">Transferring Dexterous Manipulation from GPU Simulation to a Remote Real-World TriFinger</div><span class="paper-meta">IROS 2022</span></li>
-                        <li><span class="li-number">10.</span><div class="paper-title" onclick="showEssay('Isaac Gym', 'NeurIPS 2021', 'Makoviychuk et al.')">Isaac Gym: High Performance GPU-Based Physics Simulation</div><span class="paper-meta">NeurIPS 2021</span></li>
-                        <li><span class="li-number">11.</span><div class="paper-title" onclick="showEssay('DexPilot', 'ICRA 2020', 'Handa et al.')">DexPilot: Vision-Based Teleoperation of Dexterous Robotic Hand-Arm System</div><span class="paper-meta">ICRA 2020</span></li>
-                        <li><span class="li-number">12.</span><div class="paper-title" onclick="showEssay('Tactile Force', 'ICRA 2019', 'Sundaralingam et al.')">Robust Learning of Tactile Force Estimation through Robot Interaction</div><span class="paper-meta">ICRA 2019 • <span class="award-note">Best Manipulation Paper Award Finalist</span></span></li>
-                        <li><span class="li-number">13.</span><div class="paper-title" onclick="showEssay('Closing Sim-Real', 'ICRA 2019', 'Chebotar et al.')">Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience</div><span class="paper-meta">ICRA 2019 • <span class="award-note">Best Student Paper Award Finalist</span></span></li>
-                        <li><span class="li-number">14.</span><div class="paper-title" onclick="showEssay('GPU RL Simulation', 'CoRL 2018', 'Handa & Liang et al.')">GPU-Accelerated Robotic Simulation for Distributed Reinforcement Learning</div><span class="paper-meta">CoRL 2018 • <span class="award-note">Spotlight</span></span></li>
-                        <li><span class="li-number">15.</span><div class="paper-title" onclick="showEssay('SceneNet RGB-D Segmentation', 'ICCV 2017', 'McCormac et al.')">SceneNet RGB-D: Can 5M Synthetic Images Beat Generic ImageNet Pre-training on Indoor Segmentation?</div><span class="paper-meta">ICCV 2017</span></li>
-                        <li><span class="li-number">16.</span><div class="paper-title" onclick="showEssay('Real Indoor Scenes', 'CVPR 2016', 'Handa et al.')">Understanding Real World Indoor Scenes With Synthetic Data</div><span class="paper-meta">CVPR 2016</span></li>
-                        <li><span class="li-number">17.</span><div class="paper-title" onclick="showEssay('SceneNet Generator', 'ICRA 2016', 'Handa et al.')">SceneNet: an Annotated Model Generator for Indoor Scene Understanding</div><span class="paper-meta">ICRA 2016</span></li>
-                        <li><span class="li-number">18.</span><div class="paper-title" onclick="showEssay('RGB-D SLAM Benchmark', 'ICRA 2014', 'Handa et al.')">A Benchmark for RGB-D Visual Odometry, 3D Reconstruction and SLAM</div><span class="paper-meta">ICRA 2014</span></li>
-                        <li><span class="li-number">19.</span><div class="paper-title" onclick="showEssay('Mosaicing', 'BMVC 2014', 'Kim et al.')">Simultaneous Mosaicing and Tracking with an Event Camera</div><span class="paper-meta">BMVC 2014 • <span class="award-note">Best Industry Paper Award Winner</span></span></li>
-                        <li><span class="li-number">20.</span><div class="paper-title" onclick="showEssay('Camera Tracking', 'ECCV 2012', 'Handa et al.')">Real-Time Camera Tracking: When is High Frame-Rate Best?</div><span class="paper-meta">ECCV 2012</span></li>
-                        <li><span class="li-number">21.</span><div class="paper-title" onclick="showEssay('Active Matching', 'CVPR 2010', 'Handa et al.')">Scalable Active Matching</div><span class="paper-meta">CVPR 2010</span></li>
+                        <li><span class="li-number">1.</span><div class="paper-title">Isaac lab: A gpu-accelerated simulation framework for multi-modal robot learning</div><span class="paper-meta">arXiv preprint arXiv:2511.04831 (2025)</span></li>
+                        <li><span class="li-number">2.</span><div class="paper-title">End-to-End RL Improves Dexterous Grasping Policies</div><span class="paper-meta">arXiv preprint arXiv:2509.16434 (2025)</span></li>
+                        <li><span class="li-number">3.</span><div class="paper-title">CoT-VLA: Visual Chain-of-Thought Reasoning for Vision-Language-Action Models</div><span class="paper-meta">CVPR 2025</span></li>
+                        <li><span class="li-number">4.</span><div class="paper-title">DextrAH-RGB: Visuomotor Policies to Grasp Anything with Dexterous Hands</div><span class="paper-meta">CoRR abs/2412.01791 (2024/25)</span></li>
+                        <li><span class="li-number">5.</span><div class="paper-title">DextrAH-G: Pixels-to-Action Dexterous Arm-Hand Grasping with Geometric Fabrics</div><span class="paper-meta">CoRL 2024</span></li>
+                        <li><span class="li-number">6.</span><div class="paper-title">DeXtreme: Transfer of Agile In-Hand Manipulation from Simulation to Reality</div><span class="paper-meta">ICRA 2023</span></li>
+                        <li><span class="li-number">7.</span><div class="paper-title">CuRobo: Parallelized Collision-Free Robot Motion Generation</div><span class="paper-meta">ICRA 2023</span></li>
+                        <li><span class="li-number">8.</span><div class="paper-title">DexPBT: Scaling up Dexterous Manipulation for Hand-Arm Systems with Population-Based Training</div><span class="paper-meta">RSS 2023</span></li>
+                        <li><span class="li-number">9.</span><div class="paper-title">Transferring Dexterous Manipulation from GPU Simulation to a Remote Real-World TriFinger</div><span class="paper-meta">IROS 2022</span></li>
+                        <li><span class="li-number">10.</span><div class="paper-title">Isaac Gym: High Performance GPU-Based Physics Simulation</div><span class="paper-meta">NeurIPS 2021</span></li>
+                        <li><span class="li-number">11.</span><div class="paper-title">DexPilot: Vision-Based Teleoperation of Dexterous Robotic Hand-Arm System</div><span class="paper-meta">ICRA 2020</span></li>
+                        <li><span class="li-number">12.</span><div class="paper-title">Robust Learning of Tactile Force Estimation through Robot Interaction</div><span class="paper-meta">ICRA 2019 • <span class="award-note">Best Manipulation Paper Award Finalist</span></span></li>
+                        <li><span class="li-number">13.</span><div class="paper-title">Closing the Sim-to-Real Loop: Adapting Simulation Randomization with Real World Experience</div><span class="paper-meta">ICRA 2019 • <span class="award-note">Best Student Paper Award Finalist</span></span></li>
+                        <li><span class="li-number">14.</span><div class="paper-title">GPU-Accelerated Robotic Simulation for Distributed Reinforcement Learning</div><span class="paper-meta">CoRL 2018 • <span class="award-note">Spotlight</span></span></li>
+                        <li><span class="li-number">15.</span><div class="paper-title">SceneNet RGB-D Segmentation: Can 5M Synthetic Images Beat Generic ImageNet Pre-training on Indoor Segmentation?</div><span class="paper-meta">ICCV 2017</span></li>
+                        <li><span class="li-number">16.</span><div class="paper-title">Understanding Real World Indoor Scenes With Synthetic Data</div><span class="paper-meta">CVPR 2016</span></li>
+                        <li><span class="li-number">17.</span><div class="paper-title">SceneNet: an Annotated Model Generator for Indoor Scene Understanding</div><span class="paper-meta">ICRA 2016</span></li>
+                        <li><span class="li-number">18.</span><div class="paper-title">A Benchmark for RGB-D Visual Odometry, 3D Reconstruction and SLAM</div><span class="paper-meta">ICRA 2014</span></li>
+                        <li><span class="li-number">19.</span><div class="paper-title">Simultaneous Mosaicing and Tracking with an Event Camera</div><span class="paper-meta">BMVC 2014 • <span class="award-note">Best Industry Paper Award Winner</span></span></li>
+                        <li><span class="li-number">20.</span><div class="paper-title">Real-Time Camera Tracking: When is High Frame-Rate Best?</div><span class="paper-meta">ECCV 2012</span></li>
+                        <li><span class="li-number">21.</span><div class="paper-title">Scalable Active Matching</div><span class="paper-meta">CVPR 2010</span></li>
                     </ul>
 
                     <h2>Links</h2>
@@ -343,7 +325,7 @@
 
             <!-- Project View -->
             <section id="essay-view" class="essay-view">
-                <a href="#" class="back-link" onclick="showHome()">← Back to profile</a>
+                <a class="back-link" onclick="showHome()">← Back to profile</a>
                 
                 <div class="essay-header">
                     <h1 id="essay-title">Research Project</h1>
@@ -370,18 +352,6 @@
             const body = document.body;
             body.classList.toggle('dark-mode');
             localStorage.setItem('theme', body.classList.contains('dark-mode') ? 'dark' : 'light');
-        }
-
-        function showEssay(title, date, author) {
-            document.getElementById('home-view').style.display = 'none';
-            document.getElementById('sidebar').style.display = 'none';
-            document.getElementById('essay-view').style.display = 'block';
-            
-            document.getElementById('essay-title').innerText = title;
-            document.getElementById('essay-date').innerText = date;
-            document.getElementById('essay-author').innerText = author;
-            
-            window.scrollTo(0, 0);
         }
 
         function showHome() {
