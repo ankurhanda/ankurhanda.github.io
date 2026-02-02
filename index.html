@@ -94,9 +94,18 @@
         }
 
         .sidebar-list a {
-            text-decoration: underline; 
-            text-underline-offset: 3px;
+            text-decoration: none; /* Navigation links are no longer underlined */
             color: inherit;
+        }
+
+        .sidebar-list a:hover {
+            color: var(--hover-color);
+        }
+
+        /* Specifically underline links in the content area (like GitHub/Scholar) */
+        .content-wrapper .sidebar-list a {
+            text-decoration: underline;
+            text-underline-offset: 3px;
         }
 
         /* Main Content Styling */
